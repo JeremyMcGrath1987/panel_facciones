@@ -1,6 +1,6 @@
 <template>
   <div class="file flex flex-col flex-no-wrap">
-    <top-bar />
+    <!-- <top-bar /> -->
     <div class="file-details-content flex flex-row">
       <div class="flex flex-wrap p-4">
         <!-- <file-image /> -->
@@ -39,12 +39,12 @@
   </div>
 </template>
 <script>
-import topBar from "../components/topbar";
+/* import topBar from "../components/topbar"; */
 import fileMenu from "../components/fileMenu";
 /* import fileImage from "../components/fileImage"; */
 export default {
   name: "file",
-  components: { topBar, fileMenu/* , fileImage */ },
+  components: { /* topBar, */ fileMenu/* , fileImage */ },
   async mounted() {
     await this.$store.dispatch("loadingScreen/ISLOADING", false);
   },
@@ -69,12 +69,12 @@ export default {
   }
 }
 tr:nth-child(odd) {
-  background: #0b122f;
+  border: 1px solid #000000;
 }
 .button-remove-note{
-  width: 20px;
+  width: 62px;
   height: 20px;
-  border: 1px solid #587fff;
+  border: 1px solid #000000;
 }
 .button-remove-note:focus{
   outline: none;

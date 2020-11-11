@@ -1,6 +1,6 @@
 <template>
   <div class="files flex flex-col flex-no-wrap">
-    <topbar />
+    <!-- <topbar /> -->
     <div class="file-details-content flex flex-row">
       <div class="flex flex-wrap p-4">
         <!-- <file-image /> -->
@@ -31,6 +31,7 @@
               <td class="px-4 py-2">Nombre</td>
               <td class="px-4 py-2">ID</td>
               <td class="px-4 py-2">Cargo</td>
+              <td class="px-4 py-2">Salario</td>
               <td class="px-4 py-2">Ascenso</td>
               <td class="px-4 py-2">Despido</td>
             </tr>
@@ -43,8 +44,9 @@
             >
               <td></td>
               <td class="px-4 py-2">{{ file.name }}</td>
-              <td class="px-4 py-2 w-1/6">{{ file.id }}</td>
-              <td class="px-4 py-2 w-1/5">Cargo</td>
+              <td class="px-4 py-2">{{ file.id }}</td>
+              <td class="px-4 py-2">{{ file.cargo }}</td>
+              <td class="px-4 py-2">{{ formatPrice(file.salario) }} $</td>
               <td class="px-4 py-2">
                 <button
                   :value="index"
@@ -72,12 +74,14 @@
   </div>
 </template>
 <script>
-import topbar from "../components/topbar";
+/* import topbar from "../components/topbar"; */
 /* import file from "../components/file"; */
+import formatPrice from "../mixins/formatPrice";
 import fileMenu from "../components/fileMenu";
 export default {
   name: "file",
-  components: { topbar, /* file, */ fileMenu },
+  components: { /* topbar, */ /* file, */ fileMenu },
+  mixins: [formatPrice],
   methods: {
     gotofile: async function(id) {
       /* await this.$store.dispatch("loadingScreen/ISLOADING", true); */
@@ -88,3 +92,23 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.file-details {
+  li {
+    border: none;
+    padding: 0;
+    display: block;
+  }
+}
+tr:nth-child(odd) {
+  border: 1px solid #000000;
+}
+.button-remove-note{
+  width: 62px;
+  height: 20px;
+  border: 1px solid #000000;
+}
+.button-remove-note:focus{
+  outline: none;
+}
+</style>

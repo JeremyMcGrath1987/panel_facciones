@@ -10,9 +10,7 @@
       class="recto-screen overflow-y-scroll"
       :style="{
         background:
-          'url(' +
-          bgpattern +
-          '), radial-gradient(circle, rgba(3, 0, 36, 1) 0%, rgba(30, 20, 94, 1) 0%, rgba(22, 18, 51, 1) 100%)'
+          'url('+'), radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%)'
       }"
     >
       <transition name="fade">
@@ -26,11 +24,9 @@
   </div>
 </template>
 <script>
-import bgPattern from "./mixins/bgPattern";
 import loadingScreen from "./components/loadingScreen";
 export default {
   name: "app",
-  mixins: [bgPattern],
   components: { loadingScreen },
   methods: {
     closeRecto: function() {
@@ -70,11 +66,11 @@ export default {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #587fff;
+  background: #000000;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #587fff;
+  background: #000000;
 }
 </style>

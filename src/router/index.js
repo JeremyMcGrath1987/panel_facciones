@@ -1,19 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Files from "../views/Files.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/files",
     name: "Files",
-    component: () => import("../views/Files")
+    component: Files
   },
   {
     path: "/file/:id",

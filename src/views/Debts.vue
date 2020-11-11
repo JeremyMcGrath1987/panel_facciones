@@ -1,6 +1,6 @@
 <template>
   <div class="file flex flex-col flex-no-wrap pb-16">
-    <div
+   <!--  <div
       class="lista-delitos-aplicados fixed bg-recto-normal z-20 overflow-y-scroll"
     >
       <div class="delitos-header flex flex-row py-4 px-4 flex-grow float-right">
@@ -17,8 +17,8 @@
           </li>
         </ul>
       </div>
-    </div>
-    <top-bar />
+    </div> -->
+    <!-- <top-bar /> -->
     <div class="file-details-content flex flex-row">
       <div class="flex flex-wrap p-4">
         <!-- <file-image /> -->
@@ -65,7 +65,7 @@
   </div>
 </template>
 <script>
-import topBar from "../components/topbar";
+/* import topBar from "../components/topbar"; */
 import fileMenu from "../components/fileMenu";
 /* import fileImage from "../components/fileImage"; */
 import formatPrice from "../mixins/formatPrice";
@@ -78,7 +78,7 @@ export default {
       isDesplegada: false
     };
   },
-  components: { topBar, fileMenu/* , fileImage */ },
+  components: { /* topBar, */ fileMenu/* , fileImage */ },
   mixins: [formatPrice, totalDebt],
   async mounted() {
     await this.$store.dispatch("loadingScreen/ISLOADING", false);
@@ -111,7 +111,7 @@ export default {
   }
 }
 tr:nth-child(odd) {
-  background: #0b122f;
+  border: 1px solid #000000;
 }
 .recto-checkbox {
   -moz-appearance: none;
