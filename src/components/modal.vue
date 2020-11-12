@@ -8,13 +8,13 @@
           </div>
           <div class="modal-footer">
             <slot name="footer">
-              Busqueda vacía, selecciona un tag para buscar o escribe en el recuadro de busqueda
+              Escribe la ID de un ciudadano en el recuadro de búsqueda.
             </slot>
             
           </div>
           <div class="modal-default-button">
               <button
-                class="flex-shrink-0 bg-recto-light hover:bg-blue-500 text-white py-2 px-4 border border-recto-light hover:border-blue-500"
+                class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
                 @click="$emit('close')"
               >OK</button>
           </div>          

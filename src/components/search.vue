@@ -5,17 +5,19 @@
         v-model="query"
         class="appearance-none bg-recto-dark border border-recto-light w-full p-2 uppercase focus:outline-none placeholder-gray-700"
         type="text"
-        placeholder="NOMBRE O MATRÍCULA"
+        placeholder="INTRODUCE ID"
       />
       <button
         @click="searchForFiles"
-        class="flex-shrink-0 bg-recto-light hover:bg-blue-500 text-white py-2 px-4 border border-recto-light hover:border-blue-500"
+        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
         type="button"
-      >BUSCAR FICHAS</button>
+      >
+        BUSCAR CIUDADANO/A
+      </button>
     </div>
     <div id="app">
       <modal v-if="showModal" @close="showModal = false">
-        <h3 slot="header">Busqueda incorrecta</h3>
+        <h3 slot="header">Búsqueda incorrecta</h3>
       </modal>
     </div>
   </div>
@@ -25,50 +27,38 @@ import modal from "./modal";
 export default {
   name: "search",
   components: {
-    modal
+    modal,
   },
   data: () => {
     return {
       query: "",
-      showModal: false
+      showModal: false,
     };
   },
   methods: {
-    searchForFiles: async function() {
+    searchForFiles: async function () {
       let query = this.query.trim();
       let fastsearch = this.$store.state.search;
       let search = {
         query: query,
         type: undefined,
-        tag: fastsearch
+        tag: fastsearch,
       };
       await this.$store.dispatch("loadingScreen/ISLOADING", true);
       if (
-        query !== "" ||
-        query.search(/[0-9]/) >= 0 ||
-        query.search(/[a-z]/) >= 0 ||
-        search.tag.byc ||
-        search.tag.lspd ||
-        search.tag.peligroso ||
-        search.tag.embargado
+        query.search(/^[0-9]/) >= 0
+        
       ) {
         if (query.search(/[0-9]/) >= 0) {
-          if (query.search(/^[0-9]/) >= 0) {
-            search.type = "id";
-          }
-          if (query.search(/^[a-zA-Z]/) >= 0)  {
-            search.type = "plate";
-          }
-        } else if (query.search(/[a-zA-Z]/) >= 0) {
-          search.type = "name";
+          search.type = "id";
         } else {
           query = "undefined";
           search.query = undefined;
         }
 
-        if (this.$route.name !== "Files") {
+        if (this.$route.name !== "Files2") {
           await this.$router.push({
-            name: "Files"
+            name: "Files2",
           });
         }
         /* // eslint-disable-next-line no-undef
@@ -78,7 +68,7 @@ export default {
         this.showModal = true;
         await this.$store.dispatch("loadingScreen/ISLOADING", false);
       }
-    }
-  }
+    },
+  },
 };
 </script>

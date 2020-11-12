@@ -5,8 +5,7 @@
         :style="{
             background:
                 'url(' +
-                bgpattern +
-                '), radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(20, 20, 94, 1) 0%, rgba(22, 18, 51, 1) 100%)'
+                '), radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%)'
         }"
     >
         <div class="lds-roller">
@@ -23,10 +22,8 @@
     </div>
 </template>
 <script>
-import bgPattern from "../mixins/bgPattern";
 export default {
-    name: "loading-screen",
-    mixins: [bgPattern]
+    name: "loading-screen"
 };
 </script>
 <style lang="scss">

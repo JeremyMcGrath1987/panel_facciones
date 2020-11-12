@@ -6,6 +6,7 @@ import file from "./file";
 import articlesList from "./articlesList";
 import user from "./user";
 import files from "./files";
+import files2 from "./files2"
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     file,
     articlesList,
     user,
-    files
+    files,
+    files2
   }
 });

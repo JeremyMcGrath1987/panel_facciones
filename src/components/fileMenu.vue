@@ -20,10 +20,10 @@
     </li>
     <li class="my-10">
       <a
-        @click="goto('Debts')"
+        @click="goto('Files2')"
         class="hover:text-blue-800 cursor-pointer"
         :class="{
-          'border-b-2 border-recto-light': active === 'deudas'
+          'border-b-2 border-recto-light': active === 'files2'
         }"
         >Contratar Empleado</a
       >
