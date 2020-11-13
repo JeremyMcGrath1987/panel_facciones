@@ -54,7 +54,87 @@ export default {
           _availableSlots: 470,
           _items: [
             {
-              name: "Madera mala",
+              name: "Pistola Vintage",
+              slots: 1,
+              weight: 0,
+              type: "recipe",
+              ilegal: false,
+              prop: "prop_fncwood_16e",
+              icon: "madera",
+              text: "undefined",
+              qty: 2
+            },{
+              name: "Bolsita María",
+              slots: 1,
+              weight: 0,
+              type: "recipe",
+              ilegal: false,
+              prop: "prop_fncwood_16e",
+              icon: "madera",
+              text: "undefined",
+              qty: 2
+            },{
+              name: "Bolsita Coca",
+              slots: 1,
+              weight: 0,
+              type: "recipe",
+              ilegal: false,
+              prop: "prop_fncwood_16e",
+              icon: "madera",
+              text: "undefined",
+              qty: 2
+            },{
+              name: "Porra",
+              slots: 1,
+              weight: 0,
+              type: "recipe",
+              ilegal: false,
+              prop: "prop_fncwood_16e",
+              icon: "madera",
+              text: "undefined",
+              qty: 2
+            },{
+              name: "Taser",
+              slots: 1,
+              weight: 0,
+              type: "recipe",
+              ilegal: false,
+              prop: "prop_fncwood_16e",
+              icon: "madera",
+              text: "undefined",
+              qty: 2
+            },{
+              name: "Dinero Negro",
+              slots: 1,
+              weight: 0,
+              type: "recipe",
+              ilegal: false,
+              prop: "prop_fncwood_16e",
+              icon: "madera",
+              text: "undefined",
+              qty: 2
+            },{
+              name: "Bidón Gasolina",
+              slots: 1,
+              weight: 0,
+              type: "recipe",
+              ilegal: false,
+              prop: "prop_fncwood_16e",
+              icon: "madera",
+              text: "undefined",
+              qty: 2
+            },{
+              name: "Joyas",
+              slots: 1,
+              weight: 0,
+              type: "recipe",
+              ilegal: false,
+              prop: "prop_fncwood_16e",
+              icon: "madera",
+              text: "undefined",
+              qty: 2
+            },{
+              name: "Linterna",
               slots: 1,
               weight: 0,
               type: "recipe",
@@ -74,7 +154,7 @@ export default {
               text: "undefined",
               qty: 2
             },{
-              name: "Madera mala",
+              name: "Madera",
               slots: 1,
               weight: 0,
               type: "recipe",
@@ -84,7 +164,7 @@ export default {
               text: "undefined",
               qty: 2
             },{
-              name: "Madera mala",
+              name: "Madera",
               slots: 1,
               weight: 0,
               type: "recipe",
@@ -94,7 +174,7 @@ export default {
               text: "undefined",
               qty: 2
             },{
-              name: "Madera mala",
+              name: "Madera",
               slots: 1,
               weight: 0,
               type: "recipe",
@@ -104,7 +184,7 @@ export default {
               text: "undefined",
               qty: 2
             },{
-              name: "Madera mala",
+              name: "Madera",
               slots: 1,
               weight: 0,
               type: "recipe",
@@ -114,7 +194,7 @@ export default {
               text: "undefined",
               qty: 2
             },{
-              name: "Madera mala",
+              name: "Madera",
               slots: 1,
               weight: 0,
               type: "recipe",
@@ -124,77 +204,7 @@ export default {
               text: "undefined",
               qty: 2
             },{
-              name: "Madera mala",
-              slots: 1,
-              weight: 0,
-              type: "recipe",
-              ilegal: false,
-              prop: "prop_fncwood_16e",
-              icon: "madera",
-              text: "undefined",
-              qty: 2
-            },{
-              name: "Madera mala",
-              slots: 1,
-              weight: 0,
-              type: "recipe",
-              ilegal: false,
-              prop: "prop_fncwood_16e",
-              icon: "madera",
-              text: "undefined",
-              qty: 2
-            },{
-              name: "Madera mala",
-              slots: 1,
-              weight: 0,
-              type: "recipe",
-              ilegal: false,
-              prop: "prop_fncwood_16e",
-              icon: "madera",
-              text: "undefined",
-              qty: 2
-            },{
-              name: "Madera mala",
-              slots: 1,
-              weight: 0,
-              type: "recipe",
-              ilegal: false,
-              prop: "prop_fncwood_16e",
-              icon: "madera",
-              text: "undefined",
-              qty: 2
-            },{
-              name: "Madera mala",
-              slots: 1,
-              weight: 0,
-              type: "recipe",
-              ilegal: false,
-              prop: "prop_fncwood_16e",
-              icon: "madera",
-              text: "undefined",
-              qty: 2
-            },{
-              name: "Madera mala",
-              slots: 1,
-              weight: 0,
-              type: "recipe",
-              ilegal: false,
-              prop: "prop_fncwood_16e",
-              icon: "madera",
-              text: "undefined",
-              qty: 2
-            },{
-              name: "Madera mala",
-              slots: 1,
-              weight: 0,
-              type: "recipe",
-              ilegal: false,
-              prop: "prop_fncwood_16e",
-              icon: "madera",
-              text: "undefined",
-              qty: 2
-            },{
-              name: "Madera mala",
+              name: "Madera",
               slots: 1,
               weight: 0,
               type: "recipe",

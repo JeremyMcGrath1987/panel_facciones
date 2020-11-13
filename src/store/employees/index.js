@@ -3,7 +3,7 @@ export default {
   state: {
     data: [{ "name": "Jose Mayo", "id": "9845613212F","salario": 800, "rank": "Jefe LSPD", "online": true},
     { "name": "Mark Ruffalo", "id": "1603206077L","salario": 750, "rank": "Jefe Adjunto", "online": true },
-    { "name": "Jeff Ground", "id": "4513789546K","salario": 700, "rank": "Jefe Supervisor", "online": false },
+    { "name": "Aleks Mora", "id": "4513789546K","salario": 700, "rank": "Jefe Supervisor", "online": false },
     { "name": "Frank Roswelt", "id": "8456791249H","salario": 500, "rank": "Capitán", "online": false },
     { "name": "Gregory Summers", "id": "3465178495P","salario": 450, "rank": "Teniente", "online": false },
     { "name": "Ashlynn Sampson", "id": "7447459776Q","salario": 400, "rank": "Sargento", "online": false },
@@ -24,19 +24,30 @@ export default {
     { "name": "Jacob Peterson", "id": "2603082909R","salario": 300, "rank": "Oficial", "online": true },]
   },
   actions: {
-    SETFILES: (context, filesLite) => {
-      context.commit("setFiles", filesLite);
+    ASCENDEMPLOYEE: (context, info) => {
+      context.commit("ascendEmployee", info);
+    },
+    DESCENDEMPLOYEE: (context, info) => {
+      context.commit("descendEmployee", info);
+    },
+    DISMISSEMPLOYEE: (context, index) => {
+      context.commit("dismissEmployee", index);
     }
   },
   mutations: {
-    setFiles: (state, filesLite) => {
-
-      if (filesLite.length <= 0) {
-        state.data = { message: "No hay coincidencias en el sistema" }
-      } else {
-        state.data = filesLite;
-      }
+    ascendEmployee: (state, info) => {
+      const search = state.data[info.index];
+      search.rank = info.rank;
+    },
+    descendEmployee: (state, info) => {
+      const search = state.data[info.index];
+      search.rank = info.rank;
+    },
+    dismissEmployee: (state, index) => {
+      state.data.splice(index, 1);
+      console.log(index);
 
     }
+  
   }
 };

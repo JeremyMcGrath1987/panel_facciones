@@ -14,7 +14,7 @@
       <div class="file-content py-4 pr-2 flex flex-col w-full">
         <div class="properties-wrapper flex flex-col">
           <div>
-            <table class="table-auto border-b border-recto-dark w-full">
+            <table class="table-auto border-b border-recto-dark w-1/2">
               <tbody>
                 <tr class="border border-recto-dark font-bold bg-recto-dark">
                   <td class="px-4 py-2">
@@ -31,19 +31,14 @@
           </div>
           <div class="mt-4">
             <table
-              class="table-auto border-b border-recto-dark w-full"
+              class="table-auto border-b border-recto-dark w-1/2"
             >
               <tbody>
                 <tr class="border border-recto-dark font-bold bg-recto-dark">
                   <td class="px-4 py-2">
                     Espacios disponibles en el almacén
                   </td>
-                  <td class="px-4 py-2">
-                    Espacios utilizados en el almacén
-                  </td>
-                  <td class="px-4 py-2">
-                    Espacios totales del almacén
-                  </td>
+                  
                 </tr>
                 <tr
                   class="border-l border-r border-recto-dark"
@@ -53,11 +48,52 @@
                       {{ singleFaction._inventory._inventory._availableSlots }}
                     </p>
                   </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4">
+            <table
+              class="table-auto border-b border-recto-dark w-1/2"
+            >
+              <tbody>
+                <tr class="border border-recto-dark font-bold bg-recto-dark">
+                  
+                  <td class="px-4 py-2">
+                    Espacios utilizados en el almacén
+                  </td>
+                  
+                </tr>
+                <tr
+                  class="border-l border-r border-recto-dark"
+                >
+                  
                   <td class="px-4 py-2">
                     <p>
                       {{ (singleFaction._inventory._inventory._slots - singleFaction._inventory._inventory._availableSlots) }}
                     </p>
                   </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4">
+            <table
+              class="table-auto border-b border-recto-dark w-1/2"
+            >
+              <tbody>
+                <tr class="border border-recto-dark font-bold bg-recto-dark">
+                  
+                  <td class="px-4 py-2">
+                    Espacios totales del almacén
+                  </td>
+                </tr>
+                <tr
+                  class="border-l border-r border-recto-dark"
+                >
+                  
                   <td class="px-4 py-2">
                     <p>
                       {{ singleFaction._inventory._inventory._slots }}
@@ -67,13 +103,13 @@
               </tbody>
             </table>
           </div>
-          <div class="mt-4">
+          <div>
             <table
               v-if="
                 Array.isArray(singleFaction._inventory._inventory._items) &&
                   singleFaction._inventory._inventory._items.length > 0
               "
-              class="table-auto border-b border-recto-dark w-full"
+              class="table-auto border-b border-recto-dark mb-10 w-1/3 posicion"
             >
               <tbody>
                 <tr class="border border-recto-dark font-bold bg-recto-dark">
@@ -85,7 +121,7 @@
                   </td>
                 </tr>
                 <tr
-                  class="border-l border-r border-recto-dark"
+                  class="border-l border-r border-b border-recto-dark"
                   v-for="(item, index) in singleFaction._inventory._inventory._items"
                   :key="index"
                 >
@@ -126,3 +162,10 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.posicion {
+  position: absolute;
+  top: 100px;
+  right: 41px;
+}
+</style> */
