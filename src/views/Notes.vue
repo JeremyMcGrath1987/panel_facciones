@@ -12,13 +12,12 @@
           <tbody>
             <tr class="border border-recto-dark font-bold bg-recto-dark">
               <td></td>
-              <td class="px-4 py-2">Notas</td>
-              <td class="px-4 py-2">Agente</td>
-              <td class="px-4 py-2">fecha y hora</td>
+              <td class="px-4 py-2">Rango</td>
+              <td class="px-4 py-2">Sueldo</td>
             </tr>
             <tr
               class="border-l border-r border-recto-dark"
-              v-for="(nota, index) in singleFile.notas"
+              v-for="(rango, index) in singleFaction._ranks"
               :key="index"
             >
               <td class="pl-2">
@@ -28,9 +27,8 @@
                   @click="removeNote(index)"
                 >X</button>
               </td>
-              <td class="px-4 py-2">{{ nota.texto }}</td>
-              <td class="px-4 py-2 w-1/6">{{ nota.user }}</td>
-              <td class="px-4 py-2 w-1/5">{{ nota.fecha }}</td>
+              <td class="px-4 py-2">{{ rango.label }}</td>
+              <td class="px-4 py-2 w-1/6">{{ rango.money }} $</td>
             </tr>
           </tbody>
         </table>
@@ -54,8 +52,8 @@ export default {
     }
   },
   computed: {
-    singleFile: function() {
-      return this.$store.state.file.data;
+    singleFaction: function() {
+      return this.$store.state.faction.data;
     }
   }
 };

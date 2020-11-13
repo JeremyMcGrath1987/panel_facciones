@@ -1,14 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Files from "../views/Files.vue";
+import Information from "../views/Information.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Files",
-    component: Files
+    name: "Information",
+    component: Information
   },
   {
     path: "/file/:id",
@@ -41,9 +41,9 @@ const routes = [
     component: () => import("../views/Debt")
   },
   {
-    path: "/properties",
-    name: "Properties",
-    component: () => import("../views/Properties")
+    path: "/filesemployees",
+    name: "FilesEmployees",
+    component: () => import("../views/FilesEmployees")
   },
   {
     path: "/report",

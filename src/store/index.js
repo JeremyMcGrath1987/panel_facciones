@@ -5,8 +5,9 @@ import search from "./search";
 import file from "./file";
 import articlesList from "./articlesList";
 import user from "./user";
-import files from "./files";
+import employees from "./employees";
 import files2 from "./files2"
+import faction from "./faction"
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -19,7 +20,8 @@ export default new Vuex.Store({
     file,
     articlesList,
     user,
-    files,
-    files2
+    employees,
+    files2,
+    faction
   }
 });

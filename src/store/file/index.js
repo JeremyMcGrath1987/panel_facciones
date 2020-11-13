@@ -12,6 +12,7 @@ moment.locale("en", {
 });
 
 export default {
+  namespaced: true,
   state: {
     data:
     {"_id":"5fa17d5b66c2095e784e87ef",

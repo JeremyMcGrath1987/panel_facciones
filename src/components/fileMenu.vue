@@ -2,7 +2,17 @@
   <ul class="file-details mt-4 w-48">
     <li class="my-10">
       <a
-        @click="goto('Files')"
+        @click="goto('Information')"
+        class="hover:text-blue-800 cursor-pointer"
+        :class="{
+          'border-b-2 border-recto-light': active === 'information'
+        }"
+        >Información general</a
+      >
+    </li>
+    <li class="my-10">
+      <a
+        @click="goto('FilesEmployees')"
         class="hover:text-blue-800 cursor-pointer"
         :class="{
           'border-b-2 border-recto-light': active === 'files'
@@ -28,6 +38,7 @@
         >Contratar Empleado</a
       >
     </li>
+    
     <!-- <li class="my-10">
       <a
         @click="goto('Properties')"
