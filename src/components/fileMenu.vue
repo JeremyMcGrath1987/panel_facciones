@@ -5,7 +5,7 @@
         @click="goto('Information')"
         class="hover:text-blue-800 cursor-pointer"
         :class="{
-          'border-b-2 border-recto-light': active === 'information'
+          'border-b-2 border-panel-normal': active === 'information'
         }"
         >Información general</a
       >
@@ -15,7 +15,7 @@
         @click="goto('FilesEmployees')"
         class="hover:text-blue-800 cursor-pointer"
         :class="{
-          'border-b-2 border-recto-light': active === 'files'
+          'border-b-2 border-panel-normal': active === 'files'
         }"
         >Lista empleados</a
       >
@@ -24,7 +24,7 @@
       <a
         @click="goto('MoneyManagement')"
         class="hover:text-blue-800 cursor-pointer"
-        :class="{ 'border-b-2 border-recto-light': active === 'moneymanagement' }"
+        :class="{ 'border-b-2 border-panel-normal': active === 'moneymanagement' }"
         >Gestión Dinero</a
       >
     </li>
@@ -33,7 +33,7 @@
         @click="goto('Citizen')"
         class="hover:text-blue-800 cursor-pointer"
         :class="{
-          'border-b-2 border-recto-light': active === 'citizen'
+          'border-b-2 border-panel-normal': active === 'citizen'
         }"
         >Contratar Empleado</a
       >
@@ -44,7 +44,7 @@
         @click="goto('Properties')"
         class="hover:text-blue-800 cursor-pointer"
         :class="{
-          'border-b-2 border-recto-light': active === 'propiedades'
+          'border-b-2 border-panel-normal': active === 'propiedades'
         }"
         >Propiedades</a
       >
@@ -54,23 +54,23 @@
         @click="goto('Admin')"
         class="hover:text-blue-800 cursor-pointer"
         :class="{
-          'border-b-2 border-recto-light': active === 'admin'
+          'border-b-2 border-panel-normal': active === 'admin'
         }"
         >Administración</a
       >
     </li> -->
-    <!-- <li class="ml-auto border border-recto-light py-1 px-2">
+    <!-- <li class="ml-auto border border-panel-normal py-1 px-2">
       <a class="hover:text-blue-800 cursor-pointer" @click="goto('Note')"
         >Añadir nota</a
       >
     </li>
-    <li class="ml-1 border border-recto-light py-1 px-2">
+    <li class="ml-1 border border-panel-normal py-1 px-2">
       <a class="hover:text-blue-800 cursor-pointer" @click="goto('Debt')"
         >Añadir deuda</a
       >
     </li>
     <li
-      class="ml-1 border border-recto-light bg-recto-light text-white py-1 px-2"
+      class="ml-1 border border-panel-normal bg-panel-normal text-white py-1 px-2"
     >
       <a class="hover:text-blue-800 cursor-pointer" @click="goto('Report')"
         >Denunciar</a

@@ -3,13 +3,13 @@
     <div class="flex items-center border-teal-500 py-2">
       <input
         v-model="query"
-        class="appearance-none bg-recto-dark border border-recto-light w-full p-2 uppercase focus:outline-none placeholder-gray-700"
+        class="appearance-none bg-panel-dark border border-panel-light w-full p-2 uppercase focus:outline-none placeholder-gray-700"
         type="text"
         placeholder="INTRODUCE ID"
       />
       <button
         @click="searchForFiles"
-        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
         type="button"
       >
         BUSCAR CIUDADANO/A

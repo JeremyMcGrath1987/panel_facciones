@@ -7,17 +7,17 @@
     </div>
     <div
       v-if="show"
-      class="input_money addmoney bg-recto-dark border border-recto-light"
+      class="input_money addmoney bg-panel-dark border border-panel-light"
     >
       <input
-        class="appearance-none bg-recto-dark border border-recto-light w-full p-2 focus:outline-none placeholder-gray-700"
+        class="appearance-none bg-panel-dark border border-panel-light w-full p-2 focus:outline-none placeholder-gray-700"
         type="number"
         v-model="money"
         placeholder="INTRODUCE UNA CANTIDAD"
       />
       <button
         v-if="add"
-        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="
           addMoney(money), (show = false), (add = false), (withdraw = false)
         "
@@ -26,7 +26,7 @@
       </button>
       <button
         v-if="withdraw"
-        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="
           withdrawMoney(money),
             (show = false),
@@ -37,7 +37,7 @@
         RETIRAR FONDOS
       </button>
       <button
-        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="(show = false), (add = false), (withdraw = false)"
       >
         CANCELAR
@@ -48,25 +48,25 @@
         <file-menu active="moneymanagement" />
       </div>
       <div class="file-content p-4 flex flex-col w-1/2">
-        <table class="border-b border-recto-dark">
+        <table class="border-b border-panel-dark">
           <tbody>
-            <tr class="border border-recto-dark font-bold bg-recto-dark">
+            <tr class="border border-panel-dark font-bold bg-panel-dark">
               <td class="px-4 py-2">Fondos</td>
             </tr>
-            <tr class="border-l border-r border-recto-dark">
+            <tr class="border-l border-r border-panel-dark">
               <td class="px-4 py-2 w-1/6">
                 {{ formatPrice(singleFaction._money) }} $
                 <button
-                  class="button-withdraw border-recto-light"
+                  class="button-withdraw border-panel-light"
                   @click="(show = true), (withdraw = true), (add = false)"
                 >
-                  retirar fondos
+                  RETIRAR FONDOS
                 </button>
                 <button
-                  class="button-add border-recto-light"
+                  class="button-add border-panel-light"
                   @click="(show = true), (add = true), (withdraw = false)"
                 >
-                  Ingresar fondos
+                  INGRESAR FONDOS
                 </button>
               </td>
             </tr>
@@ -74,19 +74,28 @@
         </table>
       </div>
       <div class="file-content p-4 flex flex-col w-1/2">
-        <table class="border-b border-recto-dark">
+        <table class="border-b border-panel-dark">
           <tbody>
-            <tr class="border border-recto-dark font-bold bg-recto-dark">
+            <tr class="border border-panel-dark font-bold bg-panel-dark">
               <td class="px-4 py-2">Rango</td>
               <td class="px-4 py-2">Sueldo</td>
+              <td></td>
             </tr>
             <tr
-              class="border-l border-r border-recto-dark"
+              class="border-l border-r border-panel-dark"
               v-for="(rango, index) in singleFaction._ranks"
               :key="index"
             >
               <td class="px-4 py-2">{{ rango.label }}</td>
               <td class="px-4 py-2 w-1/6">{{ rango.money }} $</td>
+              <td class="px-4 py-2 w-1/6">
+                <button
+                  class="button-withdraw border-panel-light"
+                  @click="(show = true), (withdraw = true), (add = false)"
+                >
+                  EDITAR SUELDO
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -114,6 +123,8 @@ export default {
     addMoney: function (money) {
       if (money !== undefined) {
         if (money > 0) {
+          /* // eslint-disable-next-line no-undef
+            mp.trigger("addFactionMoney", parseInt(money)); */
           this.$store.dispatch("ADDMONEY", parseInt(money));
           this.money = undefined;
           this.show = false;
@@ -123,6 +134,8 @@ export default {
     withdrawMoney: function (money) {
       if (money !== undefined) {
         if (money > 0) {
+          /* // eslint-disable-next-line no-undef
+            mp.trigger("removeFactionMoney", parseInt(money)); */
           this.$store.dispatch("WITHDRAWMONEY", parseInt(money));
           this.money = undefined;
           this.show = false;
@@ -157,6 +170,7 @@ tr:nth-child(odd) {
   height: 20px;
   border: 1px solid #000000;
   margin-left: 65px;
+  font-size: 12px;
 }
 .button-withdraw:focus {
   outline: none;
@@ -166,6 +180,7 @@ tr:nth-child(odd) {
   height: 20px;
   border: 1px solid #000000;
   margin-left: 15px;
+  font-size: 12px;
 }
 .button-add:focus {
   outline: none;

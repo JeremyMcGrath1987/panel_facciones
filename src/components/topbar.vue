@@ -11,7 +11,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.recto-text {
+.panel-text {
   height: 20px;
   margin-top: -10px;
 }

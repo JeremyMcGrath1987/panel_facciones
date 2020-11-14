@@ -3,12 +3,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "recto-dark": "#0b122f",
-        "recto-light": "gray",
-        "recto-normal": "rgb(2 0 36)"
+        "panel-dark": "#0b122f",
+        "panel-light": "gray",
+        "panel-normal": "rgb(2 0 36)"
       },
       fontFamily: {
-        recto: ["Rajdhani"]
+        panel: ["Rajdhani"]
       }
     }
   },

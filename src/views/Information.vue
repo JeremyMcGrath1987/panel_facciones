@@ -12,14 +12,14 @@
       <div class="file-content py-4 pr-2 flex flex-col w-full">
         <div class="properties-wrapper flex flex-col">
           <div>
-            <table class="table-auto border-b border-recto-dark w-1/2">
+            <table class="table-auto border-b border-panel-dark w-1/2">
               <tbody>
-                <tr class="border border-recto-dark font-bold bg-recto-dark">
+                <tr class="border border-panel-dark font-bold bg-panel-dark">
                   <td class="px-4 py-2">
                     Dinero total
                   </td>
                 </tr>
-                <tr class="border-l border-r border-recto-dark">
+                <tr class="border-l border-r border-panel-dark">
                   <td class="px-4 py-2">
                     {{ formatPrice(singleFaction._money) }} $
                   </td>
@@ -29,17 +29,17 @@
           </div>
           <div class="mt-4">
             <table
-              class="table-auto border-b border-recto-dark w-1/2"
+              class="table-auto border-b border-panel-dark w-1/2"
             >
               <tbody>
-                <tr class="border border-recto-dark font-bold bg-recto-dark">
+                <tr class="border border-panel-dark font-bold bg-panel-dark">
                   <td class="px-4 py-2">
                     Espacios disponibles en el almacén
                   </td>
                   
                 </tr>
                 <tr
-                  class="border-l border-r border-recto-dark"
+                  class="border-l border-r border-panel-dark"
                 >
                   <td class="px-4 py-2">
                     <p>
@@ -53,10 +53,10 @@
           </div>
           <div class="mt-4">
             <table
-              class="table-auto border-b border-recto-dark w-1/2"
+              class="table-auto border-b border-panel-dark w-1/2"
             >
               <tbody>
-                <tr class="border border-recto-dark font-bold bg-recto-dark">
+                <tr class="border border-panel-dark font-bold bg-panel-dark">
                   
                   <td class="px-4 py-2">
                     Espacios utilizados en el almacén
@@ -64,7 +64,7 @@
                   
                 </tr>
                 <tr
-                  class="border-l border-r border-recto-dark"
+                  class="border-l border-r border-panel-dark"
                 >
                   
                   <td class="px-4 py-2">
@@ -79,17 +79,17 @@
           </div>
           <div class="mt-4">
             <table
-              class="table-auto border-b border-recto-dark w-1/2"
+              class="table-auto border-b border-panel-dark w-1/2"
             >
               <tbody>
-                <tr class="border border-recto-dark font-bold bg-recto-dark">
+                <tr class="border border-panel-dark font-bold bg-panel-dark">
                   
                   <td class="px-4 py-2">
                     Espacios totales del almacén
                   </td>
                 </tr>
                 <tr
-                  class="border-l border-r border-recto-dark"
+                  class="border-l border-r border-panel-dark"
                 >
                   
                   <td class="px-4 py-2">
@@ -107,10 +107,10 @@
                 Array.isArray(singleFaction._inventory._inventory._items) &&
                   singleFaction._inventory._inventory._items.length > 0
               "
-              class="table-auto border-b border-recto-dark mb-10 w-1/3 posicion"
+              class="table-auto border-b border-panel-dark mb-10 w-1/3 posicion"
             >
               <tbody>
-                <tr class="border border-recto-dark font-bold bg-recto-dark">
+                <tr class="border border-panel-dark font-bold bg-panel-dark">
                   <td class="px-4 py-2">
                     Items
                   </td>
@@ -119,7 +119,7 @@
                   </td>
                 </tr>
                 <tr
-                  class="border-l border-r border-b border-recto-dark"
+                  class="border-l border-r border-b border-panel-dark"
                   v-for="(item, index) in singleFaction._inventory._inventory._items"
                   :key="index"
                 >

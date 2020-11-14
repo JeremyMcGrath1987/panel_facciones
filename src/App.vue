@@ -5,9 +5,9 @@
       alt="rugged tablet"
       class="absolute bottom-0 right-0 z-50 pointer-events-none rugged-tablet"
     />
-    <button class="buttonClose z-50" @click="closeRecto"></button>
+    <button class="buttonClose z-50" @click="closePanel"></button>
     <div
-      class="recto-screen overflow-y-scroll"
+      class="panel-screen overflow-y-scroll"
       :style="{
         background:
           'url('+'), radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%)'
@@ -29,9 +29,9 @@ export default {
   name: "app",
   components: { loadingScreen },
   methods: {
-    closeRecto: function() {
+    closePanel: function() {
       /* // eslint-disable-next-line no-undef
-        mp.trigger("closeRecto"); */
+        mp.trigger("closePanel"); */
     }
   }
 };
@@ -40,7 +40,7 @@ export default {
 .rugged-tablet {
   height: 1007px;
 }
-.recto-screen {
+.panel-screen {
   width: 1132px;
   height: 640px;
   position: absolute;
@@ -48,11 +48,11 @@ export default {
   right: 100px;
 }
 .buttonClose {
-  width: 50px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
   position: absolute;
-  bottom: 45px;
-  right: 60px;
+  bottom: 539px;
+  right: 1263px;
 }
 /* width */
 ::-webkit-scrollbar {

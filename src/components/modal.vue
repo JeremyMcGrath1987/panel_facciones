@@ -2,7 +2,7 @@
   <transition name="modal">
     <div class="modal-mask ">
       <div class="modal-wrapper">
-        <div class="modal-container bg-recto-dark border border-recto-light">
+        <div class="modal-container bg-panel-dark border border-panel-light">
           <div class="modal-header">
             <slot name="header"></slot>
           </div>
@@ -14,7 +14,7 @@
           </div>
           <div class="modal-default-button">
               <button
-                class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+                class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
                 @click="$emit('close')"
               >OK</button>
           </div>          

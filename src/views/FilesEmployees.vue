@@ -5,14 +5,15 @@
         {{ singleFaction._label }}
       </h1>
     </div>
-    <div class="alertSure bg-recto-dark border border-recto-light" v-if="rank">
-      <p class="appearance-none text-white bg-recto-dark w-full p-2">
+    <div class="alertSure bg-panel-dark border border-panel-light" v-if="rank">
+      <p class="appearance-none text-white bg-panel-dark w-full p-2">
         Selecciona un rango:
       </p>
       <select
         v-model="selected"
-        class="text-white border border-recto-light bg-recto-dark w-full p-2"
-      >
+        class="text-white border border-panel-light bg-panel-dark w-full p-2"
+      > 
+        <option value="" selected>SELECCIONA UN RANGO</option>
         <option
           v-for="(rango, index) in singleFaction._ranks"
           :key="index"
@@ -23,30 +24,30 @@
       </select>
       <button
         v-if="selected != ''"
-        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="rankEmployee(id, index, selected)"
       >
         ACEPTAR
       </button>
       <button
-        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="rank = false"
       >
         CANCELAR
       </button>
     </div>
-    <div class="alertSure bg-recto-dark border border-recto-light" v-if="show">
-      <p class="appearance-none text-white bg-recto-dark w-full p-2">
+    <div class="alertSure bg-panel-dark border border-panel-light" v-if="show">
+      <p class="appearance-none text-white bg-panel-dark w-full p-2">
         ¿Estas segura/o de despedir a {{ name }}?
       </p>
       <button
-        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="dismissEmployee(id, index)"
       >
         ACEPTAR
       </button>
       <button
-        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="show = false"
       >
         CANCELAR
@@ -57,9 +58,9 @@
         <file-menu active="files" />
       </div>
       <div class="file-content py-4 pr-2 flex flex-col w-full">
-        <table class="border-b border-recto-dark">
+        <table class="border-b border-panel-dark">
           <tbody>
-            <tr class="border border-recto-dark font-bold bg-recto-dark">
+            <tr class="border border-panel-dark font-bold bg-panel-dark">
               <td></td>
               <td class="px-4 py-2">Nombre</td>
               <td class="px-4 py-2">ID</td>
@@ -70,7 +71,7 @@
             </tr>
             <tr></tr>
             <tr
-              class="border-l border-r border-recto-dark"
+              class="border-l border-r border-panel-dark"
               v-for="(empleado, index) in this.$store.state.employees.data"
               :key="index"
               :file="empleado"
@@ -82,7 +83,7 @@
               <td class="px-4 py-2">
                 <button
                   :value="index"
-                  class="button-rank border-recto-light"
+                  class="button-rank border-panel-light"
                   @click="showRank(empleado.id, index)"
                 >
                   Ascender / Descender
@@ -91,7 +92,7 @@
               <td class="px-4 py-2">
                 <button
                   :value="index"
-                  class="button-dismiss border-recto-light"
+                  class="button-dismiss border-panel-light"
                   @click="showSure(empleado.id, index, empleado.name)"
                 >
                   Despedir
@@ -124,6 +125,12 @@ export default {
       name: "",
     };
   },
+  async mounted(){
+    await this.$store.dispatch("loadingScreen/ISLOADING", true);
+    /* // eslint-disable-next-line no-undef
+            mp.trigger("getEmployees"); */
+    await this.$store.dispatch("loadingScreen/ISLOADING", false);
+  },
   methods: {
     showSure: function (id, index, name) {
       return (
@@ -137,6 +144,8 @@ export default {
       return (this.rank = true), (this.id = id), (this.index = index);
     },
     rankEmployee: function (id, index, rank) {
+      /* // eslint-disable-next-line no-undef
+            mp.trigger("changeRankFaccion", id, idRank); */
       const info = {
         index: index,
         rank: rank,
@@ -146,16 +155,12 @@ export default {
       return (this.rank = false);
     },
     dismissEmployee: function (id, index) {
+      /* // eslint-disable-next-line no-undef
+            mp.trigger("despedirFaccion", id); */
       this.$store.dispatch("employees/DISMISSEMPLOYEE", index);
       console.log(id);
       return (this.show = false);
-    },
-    gotofile: async function (id) {
-      /* await this.$store.dispatch("loadingScreen/ISLOADING", true); */
-      await this.$router.push({ name: "File2", params: { id: id } });
-      /* // eslint-disable-next-line no-undef
-            mp.trigger("getFileRecto", id); */
-    },
+    }
   },
 };
 </script>

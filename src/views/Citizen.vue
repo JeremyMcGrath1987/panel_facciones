@@ -1,36 +1,56 @@
 <template>
   <div class="files2 flex flex-col flex-no-wrap">
-    <topbar />
+    <!-- <topbar /> -->
+    <div class="tob-bar flex flex-row items-center w-full mt-8 py-2">
+      <h1 class="mx-auto font-bold text-5xl py-2 px-4">
+        {{ singleFaction._label }}
+      </h1>
+    </div>
     <div class="file-details-content flex flex-row">
       <div class="flex flex-wrap p-4">
         <file-menu active="citizen" />
       </div>
       <div class="file-content p-4 flex flex-col w-full">
-        <table class="border-b border-recto-dark">
+        <table class="border-b border-panel-dark">
           <tbody>
-            <tr class="border border-recto-dark font-bold bg-recto-dark">
+            <tr class="border border-panel-dark font-bold bg-panel-dark">
               <td></td>
-              <td class="px-4 py-2">Nombre</td>
               <td class="px-4 py-2">ID</td>
+              <td class="px-4 py-2">Rango</td>
               <td class="px-4 py-2">Contratación</td>
             </tr>
             <tr></tr>
-            <tr
-              class="border-l border-r border-recto-dark"
-              v-for="(file, index) in this.$store.state.citizen.data"
-              :key="index"
-              :file="file"
-            >
+            <tr class="border-l border-r border-panel-dark">
               <td></td>
-              <td class="px-4 py-2">{{ file.name }}</td>
-              <td class="px-4 py-2">{{ file.id }}</td>
+              <td class="px-4 py-2">
+                <input
+                  class="appearance-none border border-panel-light w-full p-2 focus:outline-none placeholder-gray-700"
+                  type="text"
+                  v-model="id"
+                  placeholder="INTRODUCE LA ID A CONTRATAR"
+                />
+              </td>
+              <td class="px-4 py-2">
+                <select
+                  v-model="rank"
+                  class="border border-panel-light w-full p-2"
+                >
+                  <option value="" selected>SELECCIONA UN RANGO</option>
+                  <option
+                    v-for="(rango, index) in singleFaction._ranks"
+                    :key="index"
+                    v-bind:value="rango.label"
+                  >
+                    {{ rango.label }} - {{rango.money}}
+                  </option>
+                </select>
+              </td>
               <td class="px-4 py-2">
                 <button
-                  :value="index"
-                  class="button-contract border-recto-light"
-                  @click="contract(file.id)"
+                  class="button-contract border-panel-normal"
+                  @click="contract(id)"
                 >
-                  Contratar
+                  CONTRATAR
                 </button>
               </td>
             </tr>
@@ -41,24 +61,37 @@
   </div>
 </template>
 <script>
-import topbar from "../components/topbar";
+/* import topbar from "../components/topbar"; */
+import singleFaction from "../mixins/singleFaction";
 import formatPrice from "../mixins/formatPrice";
 import fileMenu from "../components/fileMenu";
 export default {
   name: "citizen",
-  components: { topbar, fileMenu },
-  mixins: [formatPrice],
+  components: { /* topbar, */ fileMenu },
+  mixins: [formatPrice, singleFaction],
+  data: () => {
+    return {
+      rank: "",
+      id: undefined
+    };
+  },
   methods: {
     contract: function (id) {
-      console.log(id);
+      if(id !== undefined){
+        if(id.trim() !== ""){
+          console.log(id.trim());
+        }
+        
+      }
+      this.id = undefined;
     },
-    gotofile: async function(id) {
+    gotofile: async function (id) {
       /* await this.$store.dispatch("loadingScreen/ISLOADING", true); */
       await this.$router.push({ name: "Citizen", params: { id: id } });
       /* // eslint-disable-next-line no-undef
             mp.trigger("getFileRecto", id); */
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -72,12 +105,12 @@ export default {
 tr:nth-child(odd) {
   border: 1px solid #000000;
 }
-.button-contract{
-  width: 70px;
+.button-contract {
+  width: 85px;
   height: 20px;
   border: 1px solid #000000;
 }
-.button-remove-note:focus{
+.button-remove-note:focus {
   outline: none;
 }
 </style>
