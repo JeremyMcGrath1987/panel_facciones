@@ -14,7 +14,6 @@
         class="text-white border border-recto-light bg-recto-dark w-full p-2"
       >
         <option
-          selected
           v-for="(rango, index) in singleFaction._ranks"
           :key="index"
           v-bind:value="rango.label"
@@ -82,7 +81,6 @@
               <td class="px-4 py-2">Nombre</td>
               <td class="px-4 py-2">ID</td>
               <td class="px-4 py-2">Rango</td>
-              <td class="px-4 py-2">Salario</td>
               <td class="px-4 py-2">Ascenso / Descenso</td>
               <td class="px-4 py-2">Despido</td>
               <td class="px-2 py-2">Online</td>
@@ -98,7 +96,6 @@
               <td class="px-4 py-2">{{ empleado.name }}</td>
               <td class="px-4 py-2">{{ empleado.id }}</td>
               <td class="px-4 py-2">{{ empleado.rank }}</td>
-              <td class="px-4 py-2">{{ formatPrice(empleado.salario) }} $</td>
               <td class="px-4 py-2">
                 <button
                   :value="index"

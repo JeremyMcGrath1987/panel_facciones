@@ -1,17 +1,103 @@
 <template>
   <div class="file flex flex-col flex-no-wrap">
-    <!-- <top-bar /> -->
+    <div class="tob-bar flex flex-row items-center w-full mt-8 py-2">
+      <h1 class="mx-auto font-bold text-5xl py-2 px-4">
+        {{ singleFaction._label }}
+      </h1>
+    </div>
+    <div
+      v-if="show"
+      class="input_money addmoney bg-recto-dark border border-recto-light"
+    >
+      <input
+        class="appearance-none bg-recto-dark border border-recto-light w-full p-2 focus:outline-none placeholder-gray-700"
+        type="number"
+        v-model="money"
+        placeholder="INTRODUCE UNA CANTIDAD"
+      />
+      <button
+        v-if="add"
+        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        @click="
+          addMoney(money), (show = false), (add = false), (withdraw = false)
+        "
+      >
+        AÑADIR FONDOS
+      </button>
+      <button
+        v-if="withdraw"
+        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        @click="
+          withdrawMoney(money),
+            (show = false),
+            (add = false),
+            (withdraw = false)
+        "
+      >
+        RETIRAR FONDOS
+      </button>
+      <button
+        class="flex-shrink-0 bg-recto-light hover:bg-gray-500 text-white py-2 px-4 border border-recto-light hover:border-gray-500"
+        @click="(show = false), (add = false), (withdraw = false)"
+      >
+        CANCELAR
+      </button>
+    </div>
+    <!-- <div class="input_money withdrawMoney bg-recto-dark border border-recto-light">
+      <input
+        class="appearance-none bg-recto-dark border border-recto-light w-full p-2 focus:outline-none placeholder-gray-700"
+        type="number"
+        v-model="money"
+        placeholder="INTRODUCE UNA CANTIDAD"
+      />
+      <button
+        class="flex-shrink-0 bg-recto-light hover:bg-blue-500 text-white py-2 px-4 border border-recto-light hover:border-blue-500"
+        @click="withdrawMoney(money)"
+      >
+        RETIRAR FONDOS
+      </button>
+      <button
+        class="flex-shrink-0 bg-recto-light hover:bg-blue-500 text-white py-2 px-4 border border-recto-light hover:border-blue-500"
+        @click="money = undefined"
+      >
+        CANCELAR
+      </button>
+    </div> -->
     <div class="file-details-content flex flex-row">
       <div class="flex flex-wrap p-4">
         <!-- <file-image /> -->
         <file-menu active="notas" />
       </div>
-      <div class="file-content p-4 flex flex-col w-full">
-        
+      <div class="file-content p-4 flex flex-col w-1/2">
         <table class="border-b border-recto-dark">
           <tbody>
             <tr class="border border-recto-dark font-bold bg-recto-dark">
-              <td></td>
+              <td class="px-4 py-2">Fondos</td>
+            </tr>
+            <tr class="border-l border-r border-recto-dark">
+              <td class="px-4 py-2 w-1/6">
+                {{ formatPrice(singleFaction._money) }} $
+                <button
+                  class="button-withdraw border-recto-light"
+                  @click="(show = true), (withdraw = true), (add = false)"
+                >
+                  retirar fondos
+                </button>
+                <button
+                  class="button-add border-recto-light"
+                  @click="(show = true), (add = true), (withdraw = false)"
+                >
+                  Ingresar fondos
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="file-content p-4 flex flex-col w-1/2">
+        <table class="border-b border-recto-dark">
+          <tbody>
+            <tr class="border border-recto-dark font-bold bg-recto-dark">
               <td class="px-4 py-2">Rango</td>
               <td class="px-4 py-2">Sueldo</td>
             </tr>
@@ -20,13 +106,6 @@
               v-for="(rango, index) in singleFaction._ranks"
               :key="index"
             >
-              <td class="pl-2">
-                <button
-                  :value="index"
-                  class="button-remove-note border-recto-light"
-                  @click="removeNote(index)"
-                >X</button>
-              </td>
               <td class="px-4 py-2">{{ rango.label }}</td>
               <td class="px-4 py-2 w-1/6">{{ rango.money }} $</td>
             </tr>
@@ -41,21 +120,48 @@
 import fileMenu from "../components/fileMenu";
 /* import fileImage from "../components/fileImage"; */
 export default {
-  name: "file",
-  components: { /* topBar, */ fileMenu/* , fileImage */ },
+  name: "money",
+  components: { /* topBar, */ fileMenu /* , fileImage */ },
+  data: () => {
+    return {
+      money: undefined,
+      show: false,
+      add: false,
+      withdraw: false,
+    };
+  },
   async mounted() {
     await this.$store.dispatch("loadingScreen/ISLOADING", false);
   },
   methods: {
-    removeNote: function(index) {
-      this.$store.dispatch("REMOVENOTE", index);
-    }
+    addMoney: function (money) {
+      if (money !== undefined) {
+        if (money > 0) {
+          this.$store.dispatch("ADDMONEY", parseInt(money));
+          this.money = undefined;
+          this.show = false;
+        }
+      }
+    },
+    withdrawMoney: function (money) {
+      if (money !== undefined) {
+        if (money > 0) {
+          this.$store.dispatch("WITHDRAWMONEY", parseInt(money));
+          this.money = undefined;
+          this.show = false;
+        }
+      }
+    },
+    formatPrice: function (value) {
+      let val = (value / 1).toFixed(0).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
   },
   computed: {
-    singleFaction: function() {
+    singleFaction: function () {
       return this.$store.state.faction.data;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -69,12 +175,65 @@ export default {
 tr:nth-child(odd) {
   border: 1px solid #000000;
 }
-.button-remove-note{
+.button-withdraw {
+  width: 101px;
+  height: 20px;
+  border: 1px solid #000000;
+  margin-left: 65px;
+}
+.button-withdraw:focus {
+  outline: none;
+}
+.button-add {
+  width: 112px;
+  height: 20px;
+  border: 1px solid #000000;
+  margin-left: 15px;
+}
+.button-add:focus {
+  outline: none;
+}
+.button-remove-note {
   width: 62px;
   height: 20px;
   border: 1px solid #000000;
 }
-.button-remove-note:focus{
+.button-remove-note:focus {
   outline: none;
+}
+.input_money {
+  font-size: 1.1em;
+  padding: 15px;
+  text-align: center;
+}
+
+.addmoney {
+  position: absolute;
+  top: 210px;
+  left: 300px;
+  width: 550px;
+}
+
+.withdrawMoney {
+  position: absolute;
+  top: 385px;
+  left: 300px;
+  width: 550px;
+}
+
+.input_money input {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+}
+
+.input_money button {
+  margin: 15px 15px 0 15px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>

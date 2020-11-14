@@ -230,6 +230,12 @@ export default {
 
   },
   actions: {
+    ADDMONEY: (context, money) => {
+      context.commit("addMoney", money);
+    },
+    WITHDRAWMONEY: (context, money) => {
+      context.commit("withdrawMoney", money);
+    },
     SETFILE: (context, file) => {
       context.commit("setFile", file);
     },
@@ -272,6 +278,17 @@ export default {
     }
   },
   mutations: {
+    addMoney: (state, money) => {
+      state.data._money += money;
+    },
+    withdrawMoney: (state, money) => {
+      if((state.data._money - money) < 0){
+        return false
+      }else{
+        state.data._money -= money;
+      }
+      
+    },
     setFile: (state, file) => {
       state.data = file;
     },

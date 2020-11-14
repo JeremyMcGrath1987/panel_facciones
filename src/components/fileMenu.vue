@@ -25,7 +25,7 @@
         @click="goto('Notes')"
         class="hover:text-blue-800 cursor-pointer"
         :class="{ 'border-b-2 border-recto-light': active === 'notas' }"
-        >Salarios</a
+        >Gestión Dinero</a
       >
     </li>
     <li class="my-10">
