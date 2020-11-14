@@ -1,5 +1,5 @@
 <template>
-  <div class="files flex flex-col flex-no-wrap">
+  <div class="filesemployees flex flex-col flex-no-wrap">
     <div class="tob-bar flex flex-row items-center w-full mt-8 py-2">
       <h1 class="mx-auto font-bold text-5xl py-2 px-4">
         {{ singleFaction._label }}
@@ -56,23 +56,6 @@
       <div class="flex flex-wrap py-4 pl-4">
         <file-menu active="files" />
       </div>
-      <!-- <div class="items-end md:w-1/3 sm:1/2 lg:1/3 mt-8">
-        <p class="text-xl flex items-center justify-center h-full flex-col">
-          {{ this.$store.state.files.data.message }}
-        </p>
-      </div>
-      <div
-        v-if="!this.$store.state.files.data.message"
-        class="files-wrapper flex flex-wrap p-4"
-      >
-        <file
-          class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 p-1"
-          v-for="(file, index) in this.$store.state.files.data"
-          :key="index"
-          :file="file"
-          @click.native="gotofile(file.id)"
-        />
-      </div> -->
       <div class="file-content py-4 pr-2 flex flex-col w-full">
         <table class="border-b border-recto-dark">
           <tbody>
@@ -124,14 +107,12 @@
   </div>
 </template>
 <script>
-/* import topbar from "../components/topbar"; */
-/* import file from "../components/file"; */
 import formatPrice from "../mixins/formatPrice";
 import fileMenu from "../components/fileMenu";
 import singleFaction from "../mixins/singleFaction";
 export default {
   name: "filesemployees",
-  components: { /* topbar, */ /* file, */ fileMenu },
+  components: { fileMenu },
   mixins: [formatPrice, singleFaction],
   data: () => {
     return {

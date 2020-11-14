@@ -43,30 +43,9 @@
         CANCELAR
       </button>
     </div>
-    <!-- <div class="input_money withdrawMoney bg-recto-dark border border-recto-light">
-      <input
-        class="appearance-none bg-recto-dark border border-recto-light w-full p-2 focus:outline-none placeholder-gray-700"
-        type="number"
-        v-model="money"
-        placeholder="INTRODUCE UNA CANTIDAD"
-      />
-      <button
-        class="flex-shrink-0 bg-recto-light hover:bg-blue-500 text-white py-2 px-4 border border-recto-light hover:border-blue-500"
-        @click="withdrawMoney(money)"
-      >
-        RETIRAR FONDOS
-      </button>
-      <button
-        class="flex-shrink-0 bg-recto-light hover:bg-blue-500 text-white py-2 px-4 border border-recto-light hover:border-blue-500"
-        @click="money = undefined"
-      >
-        CANCELAR
-      </button>
-    </div> -->
     <div class="file-details-content flex flex-row">
       <div class="flex flex-wrap p-4">
-        <!-- <file-image /> -->
-        <file-menu active="notas" />
+        <file-menu active="moneymanagement" />
       </div>
       <div class="file-content p-4 flex flex-col w-1/2">
         <table class="border-b border-recto-dark">
@@ -116,12 +95,10 @@
   </div>
 </template>
 <script>
-/* import topBar from "../components/topbar"; */
 import fileMenu from "../components/fileMenu";
-/* import fileImage from "../components/fileImage"; */
 export default {
-  name: "money",
-  components: { /* topBar, */ fileMenu /* , fileImage */ },
+  name: "moneymanagement",
+  components: { fileMenu },
   data: () => {
     return {
       money: undefined,

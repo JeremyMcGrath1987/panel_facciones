@@ -3,26 +3,8 @@
     <topbar />
     <div class="file-details-content flex flex-row">
       <div class="flex flex-wrap p-4">
-        <!-- <file-image /> -->
-        <file-menu active="files2" />
+        <file-menu active="citizen" />
       </div>
-      <!-- <div class="items-end md:w-1/3 sm:1/2 lg:1/3 mt-8">
-        <p class="text-xl flex items-center justify-center h-full flex-col">
-          {{ this.$store.state.files.data.message }}
-        </p>
-      </div>
-      <div
-        v-if="!this.$store.state.files.data.message"
-        class="files-wrapper flex flex-wrap p-4"
-      >
-        <file
-          class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 p-1"
-          v-for="(file, index) in this.$store.state.files.data"
-          :key="index"
-          :file="file"
-          @click.native="gotofile(file.id)"
-        />
-      </div> -->
       <div class="file-content p-4 flex flex-col w-full">
         <table class="border-b border-recto-dark">
           <tbody>
@@ -35,7 +17,7 @@
             <tr></tr>
             <tr
               class="border-l border-r border-recto-dark"
-              v-for="(file, index) in this.$store.state.files2.data"
+              v-for="(file, index) in this.$store.state.citizen.data"
               :key="index"
               :file="file"
             >
@@ -46,7 +28,7 @@
                 <button
                   :value="index"
                   class="button-contract border-recto-light"
-                  @click="removeNote(index)"
+                  @click="contract(file.id)"
                 >
                   Contratar
                 </button>
@@ -60,17 +42,19 @@
 </template>
 <script>
 import topbar from "../components/topbar";
-/* import file from "../components/file"; */
 import formatPrice from "../mixins/formatPrice";
 import fileMenu from "../components/fileMenu";
 export default {
-  name: "file",
-  components: { topbar, /* file, */ fileMenu },
+  name: "citizen",
+  components: { topbar, fileMenu },
   mixins: [formatPrice],
   methods: {
+    contract: function (id) {
+      console.log(id);
+    },
     gotofile: async function(id) {
       /* await this.$store.dispatch("loadingScreen/ISLOADING", true); */
-      await this.$router.push({ name: "File2", params: { id: id } });
+      await this.$router.push({ name: "Citizen", params: { id: id } });
       /* // eslint-disable-next-line no-undef
             mp.trigger("getFileRecto", id); */
     }

@@ -5,10 +5,8 @@
         {{ singleFaction._label }}
       </h1>
     </div>
-    <!-- <top-bar /> -->
     <div class="file-details-content flex flex-row">
       <div class="flex flex-wrap py-4 pl-4">
-        <!-- <file-image /> -->
         <file-menu active="information" />
       </div>
       <div class="file-content py-4 pr-2 flex flex-col w-full">
@@ -148,14 +146,12 @@
   </div>
 </template>
 <script>
-/* import topBar from "../components/topbar"; */
-/* import fileImage from "../components/fileImage"; */
 import fileMenu from "../components/fileMenu";
 import singleFaction from "../mixins/singleFaction";
 import formatPrice from "../mixins/formatPrice";
 export default {
   name: "information",
-  components: { /* topBar, */ /* fileImage, */ fileMenu },
+  components: { fileMenu },
   mixins: [singleFaction, formatPrice],
   async mounted() {
     await this.$store.dispatch("loadingScreen/ISLOADING", false);

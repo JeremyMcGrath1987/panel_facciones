@@ -11,34 +11,9 @@ const routes = [
     component: Information
   },
   {
-    path: "/file/:id",
-    name: "File",
-    component: () => import("../views/File")
-  },
-  {
-    path: "/notes",
-    name: "Notes",
-    component: () => import("../views/Notes")
-  },
-  {
-    path: "/note",
-    name: "Note",
-    component: () => import("../views/Note")
-  },
-  {
-    path: "/debts",
-    name: "Debts",
-    component: () => import("../views/Debts")
-  },
-  {
-    path: "/administration",
-    name: "Admin",
-    component: () => import("../views/Admin")
-  },
-  {
-    path: "/debt",
-    name: "Debt",
-    component: () => import("../views/Debt")
+    path: "/moneymanagement",
+    name: "MoneyManagement",
+    component: () => import("../views/MoneyManagement")
   },
   {
     path: "/filesemployees",
@@ -46,14 +21,9 @@ const routes = [
     component: () => import("../views/FilesEmployees")
   },
   {
-    path: "/report",
-    name: "Report",
-    component: () => import("../views/Report")
-  },
-  {
-    path: "/files2",
-    name: "Files2",
-    component: () => import("../views/Files2")
+    path: "/citizen",
+    name: "Citizen",
+    component: () => import("../views/Citizen")
   }
 ];
 

@@ -56,9 +56,9 @@ export default {
           search.query = undefined;
         }
 
-        if (this.$route.name !== "Files2") {
+        if (this.$route.name !== "Citizen") {
           await this.$router.push({
-            name: "Files2",
+            name: "Citizen",
           });
         }
         /* // eslint-disable-next-line no-undef

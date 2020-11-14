@@ -22,18 +22,18 @@
     </li>
     <li class="my-10">
       <a
-        @click="goto('Notes')"
+        @click="goto('MoneyManagement')"
         class="hover:text-blue-800 cursor-pointer"
-        :class="{ 'border-b-2 border-recto-light': active === 'notas' }"
+        :class="{ 'border-b-2 border-recto-light': active === 'moneymanagement' }"
         >Gestión Dinero</a
       >
     </li>
     <li class="my-10">
       <a
-        @click="goto('Files2')"
+        @click="goto('Citizen')"
         class="hover:text-blue-800 cursor-pointer"
         :class="{
-          'border-b-2 border-recto-light': active === 'files2'
+          'border-b-2 border-recto-light': active === 'citizen'
         }"
         >Contratar Empleado</a
       >
