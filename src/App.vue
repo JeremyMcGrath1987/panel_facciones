@@ -30,8 +30,8 @@ export default {
   components: { loadingScreen },
   methods: {
     closePanel: function() {
-      /* // eslint-disable-next-line no-undef
-        mp.trigger("closePanel"); */
+      // eslint-disable-next-line no-undef
+        mp.trigger("closePanel");
     }
   }
 };

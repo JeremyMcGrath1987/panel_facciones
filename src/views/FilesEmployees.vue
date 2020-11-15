@@ -126,7 +126,7 @@ export default {
     };
   },
   async mounted() {
-    await this.$store.dispatch("loadingScreen/ISLOADING", true);
+    /* await this.$store.dispatch("loadingScreen/ISLOADING", true); */
     // eslint-disable-next-line no-undef
     mp.trigger("getEmployees");
     await this.$store.dispatch("loadingScreen/ISLOADING", false);
