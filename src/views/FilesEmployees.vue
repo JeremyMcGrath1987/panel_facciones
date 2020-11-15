@@ -7,12 +7,12 @@
     </div>
     <div class="alertSure bg-panel-dark border border-panel-light" v-if="rank">
       <p class="appearance-none text-white bg-panel-dark w-full p-2">
-        Selecciona un rango:
+        Selecciona un rango para {{ name }}:
       </p>
       <select
         v-model="rankObject"
         class="text-white border border-panel-light bg-panel-dark w-full p-2"
-      > 
+      >
         <option disabled value="" selected>SELECCIONA UN RANGO</option>
         <option
           v-for="(rango, index) in singleFaction._ranks"
@@ -84,7 +84,7 @@
                 <button
                   :value="index"
                   class="button-rank border-panel-light"
-                  @click="showRank(empleado.id, index)"
+                  @click="showRank(empleado.id, index, empleado.name)"
                 >
                   Cambiar rango
                 </button>
@@ -125,10 +125,10 @@ export default {
       name: "",
     };
   },
-  async mounted(){
+  async mounted() {
     await this.$store.dispatch("loadingScreen/ISLOADING", true);
-    /* // eslint-disable-next-line no-undef
-            mp.trigger("getEmployees"); */
+    // eslint-disable-next-line no-undef
+    mp.trigger("getEmployees");
     await this.$store.dispatch("loadingScreen/ISLOADING", false);
   },
   methods: {
@@ -140,26 +140,31 @@ export default {
         (this.name = name)
       );
     },
-    showRank: function (id, index) {
-      return (this.rank = true), (this.id = id), (this.index = index);
+    showRank: function (id, index, name) {
+      return (
+        (this.rank = true),
+        (this.id = id),
+        (this.index = index),
+        (this.name = name)
+      );
     },
     rankEmployee: function (id, index, rank) {
-      /* // eslint-disable-next-line no-undef
-            mp.trigger("changeRankFaccion", id, rank.id; */
+      // eslint-disable-next-line no-undef
+      mp.trigger("changeRankFaccion", id, rank.id);
       const info = {
         index: index,
-        rank: rank.label
+        rank: rank.label,
       };
       this.$store.dispatch("employees/ASCENDEMPLOYEE", info);
 
       return (this.rank = false);
     },
     dismissEmployee: function (id, index) {
-      /* // eslint-disable-next-line no-undef
-            mp.trigger("despedirFaccion", id); */
+      // eslint-disable-next-line no-undef
+      mp.trigger("despedirFaccion", id);
       this.$store.dispatch("employees/DISMISSEMPLOYEE", index);
       return (this.show = false);
-    }
+    },
   },
 };
 </script>
@@ -191,7 +196,7 @@ tr:nth-child(odd) {
   outline: none;
 }
 .alertSure {
-  position: absolute;
+  position: sticky;
   top: 210px;
   left: 300px;
   width: 550px;

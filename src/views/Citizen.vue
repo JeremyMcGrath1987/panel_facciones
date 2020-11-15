@@ -7,6 +7,23 @@
       </h1>
     </div>
     <div class="file-details-content flex flex-row">
+      <div
+        v-if="success"
+        class="successContract bg-panel-dark border border-panel-light"
+      >
+        <p class="appearance-none text-white bg-panel-dark w-full p-2">
+          Id: {{ this.id }} con rango: {{ this.rank.label }}
+        </p>
+        <p class="appearance-none text-white bg-panel-dark w-full p-2">
+          contratado con éxito.
+        </p>
+        <button
+          class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+          @click="(success = false), (rank = ''), (id = undefined)"
+        >
+          ACEPTAR
+        </button>
+      </div>
       <div class="flex flex-wrap p-4">
         <file-menu active="citizen" />
       </div>
@@ -35,13 +52,15 @@
                   v-model="rank"
                   class="border border-panel-light w-full p-2"
                 >
-                  <option disabled value="" selected>SELECCIONA UN RANGO</option>
+                  <option disabled value="" selected>
+                    SELECCIONA UN RANGO
+                  </option>
                   <option
                     v-for="(rango, index) in singleFaction._ranks"
                     :key="index"
                     v-bind:value="rango"
                   >
-                    {{ rango.label }} - {{rango.money}}
+                    {{ rango.label }} - {{ rango.money }}
                   </option>
                 </select>
               </td>
@@ -72,22 +91,20 @@ export default {
   data: () => {
     return {
       rank: "",
-      id: undefined
+      id: undefined,
+      success: false,
     };
   },
   methods: {
     contract: function (id, rank) {
-      if(id !== undefined){
-        if(id.trim() !== ""){
-          console.log(id.trim(), rank.id);
-          /* // eslint-disable-next-line no-undef
-            mp.trigger("citizenContract", id, rank.id); */
+      if (id !== undefined) {
+        if (id.trim() !== "" && rank.id != undefined) {
+          this.success = true;
+          // eslint-disable-next-line no-undef
+          mp.trigger("citizenContract", id, rank.id);
         }
-        
       }
-      this.rank = "";
-      this.id = undefined;
-    }
+    },
   },
 };
 </script>
@@ -109,5 +126,15 @@ tr:nth-child(odd) {
 }
 .button-remove-note:focus {
   outline: none;
+}
+
+.successContract {
+  font-size: 1.1em;
+  padding: 15px;
+  text-align: center;
+  position: absolute;
+  top: 210px;
+  left: 300px;
+  width: 550px;
 }
 </style>

@@ -77,6 +77,9 @@
         v-if="editRank"
         class="input_money addmoney bg-panel-dark border border-panel-light"
       >
+        <p class="appearance-none text-white bg-panel-dark w-full p-2">
+          modificar sueldo de {{ this.labelRank }}
+        </p>
         <input
           class="appearance-none bg-panel-dark border border-panel-light w-full p-2 focus:outline-none placeholder-gray-700"
           type="number"
@@ -114,7 +117,12 @@
               <td class="px-4 py-2 w-1/6">
                 <button
                   class="button-withdraw border-panel-light"
-                  @click="editRank = true, categoryRank=rango.id, labelRank=rango.label, indice=index"
+                  @click="
+                    (editRank = true),
+                      (categoryRank = rango.id),
+                      (labelRank = rango.label),
+                      (indice = index)
+                  "
                 >
                   EDITAR SUELDO
                 </button>
@@ -133,14 +141,14 @@ export default {
   components: { fileMenu },
   data: () => {
     return {
-      labelRank:"",
+      labelRank: "",
       categoryRank: "",
       editRank: false,
       money: undefined,
       show: false,
       add: false,
       withdraw: false,
-      indice: undefined
+      indice: undefined,
     };
   },
   async mounted() {
@@ -150,8 +158,8 @@ export default {
     addMoney: function (money) {
       if (money !== undefined) {
         if (money > 0) {
-          /* // eslint-disable-next-line no-undef
-            mp.trigger("addFactionMoney", parseInt(money)); */
+          // eslint-disable-next-line no-undef
+          mp.trigger("addFactionMoney", parseInt(money));
           this.$store.dispatch("ADDMONEY", parseInt(money));
           this.money = undefined;
           this.show = false;
@@ -161,8 +169,8 @@ export default {
     withdrawMoney: function (money) {
       if (money !== undefined) {
         if (money > 0) {
-          /* // eslint-disable-next-line no-undef
-            mp.trigger("removeFactionMoney", parseInt(money)); */
+          // eslint-disable-next-line no-undef
+          mp.trigger("removeFactionMoney", parseInt(money));
           this.$store.dispatch("WITHDRAWMONEY", parseInt(money));
           this.money = undefined;
           this.show = false;
@@ -173,17 +181,20 @@ export default {
       const idRango = this.categoryRank;
       const label = this.labelRank;
       const index = this.indice;
-      const salary={
+      const salary = {
         label: label,
         idRank: idRango,
         money: sueldo,
-        index: index
-      }
+        index: index,
+      };
       if (sueldo !== undefined) {
         if (sueldo > 0) {
-          console.log(sueldo,idRango, label);
-          /* // eslint-disable-next-line no-undef
-            mp.trigger("editSalary", salary); */
+          const sendInfo = {
+            id: idRango,
+            money: sueldo,
+          };
+          // eslint-disable-next-line no-undef
+          mp.trigger("editSalary", sendInfo);
           this.$store.dispatch("EDITSALARY", salary);
         }
       }
