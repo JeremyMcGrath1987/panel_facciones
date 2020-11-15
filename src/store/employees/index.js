@@ -4,6 +4,9 @@ export default {
     data: []
   },
   actions: {
+    SETEMPLOYEES: (context, info) => {
+      context.commit("setEmployees", info);
+    },
     ASCENDEMPLOYEE: (context, info) => {
       context.commit("ascendEmployee", info);
     },
@@ -15,6 +18,9 @@ export default {
     }
   },
   mutations: {
+    setEmployees: (state, info) => {
+      state.data = info;
+    },
     ascendEmployee: (state, info) => {
       const search = state.data[info.index];
       search.rank = info.rank;
