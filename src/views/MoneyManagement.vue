@@ -113,7 +113,7 @@
               :key="index"
             >
               <td class="px-4 py-2">{{ rango.label }}</td>
-              <td class="px-4 py-2 w-1/6">{{ rango.money }}</td>
+              <td class="px-4 py-2 w-1/6">{{ rango.money }} $</td>
               <td class="px-4 py-2 w-1/6">
                 <button
                   class="button-withdraw border-panel-light"
@@ -191,7 +191,7 @@ export default {
         if (sueldo > 0) {
           const sendInfo = {
             id: idRango,
-            money: sueldo,
+            money: parseInt(sueldo),
           };
           // eslint-disable-next-line no-undef
           mp.trigger("editSalary", sendInfo);

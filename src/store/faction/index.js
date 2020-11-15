@@ -47,7 +47,7 @@ export default {
       state.data = faction;
     },
     editSalary: (state, salary) => {
-      state.data._ranks[salary.index].money = ("$" + String(salary.money));
+      state.data._ranks[salary.index].money = salary.money;
     }
   }
 };

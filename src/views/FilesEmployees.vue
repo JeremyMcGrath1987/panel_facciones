@@ -149,8 +149,12 @@ export default {
       );
     },
     rankEmployee: function (id, index, rank) {
+      const infoRank = {
+        id: id,
+        idRank: rank.id
+      }
       // eslint-disable-next-line no-undef
-      mp.trigger("changeRankFaccion", id, rank.id);
+      mp.trigger("changeRankFaccion", infoRank);
       const info = {
         index: index,
         rank: rank.label,
