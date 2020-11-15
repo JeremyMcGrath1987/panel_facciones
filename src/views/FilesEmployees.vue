@@ -10,22 +10,22 @@
         Selecciona un rango:
       </p>
       <select
-        v-model="selected"
+        v-model="rankObject"
         class="text-white border border-panel-light bg-panel-dark w-full p-2"
       > 
-        <option value="" selected>SELECCIONA UN RANGO</option>
+        <option disabled value="" selected>SELECCIONA UN RANGO</option>
         <option
           v-for="(rango, index) in singleFaction._ranks"
           :key="index"
-          v-bind:value="rango.label"
+          v-bind:value="rango"
         >
           {{ rango.label }}
         </option>
       </select>
       <button
-        v-if="selected != ''"
+        v-if="rankObject != ''"
         class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
-        @click="rankEmployee(id, index, selected)"
+        @click="rankEmployee(id, index, rankObject)"
       >
         ACEPTAR
       </button>
@@ -65,7 +65,7 @@
               <td class="px-4 py-2">Nombre</td>
               <td class="px-4 py-2">ID</td>
               <td class="px-4 py-2">Rango</td>
-              <td class="px-4 py-2">Ascenso / Descenso</td>
+              <td class="px-4 py-2">Rangos</td>
               <td class="px-4 py-2">Despido</td>
               <td class="px-2 py-2">Online</td>
             </tr>
@@ -86,7 +86,7 @@
                   class="button-rank border-panel-light"
                   @click="showRank(empleado.id, index)"
                 >
-                  Ascender / Descender
+                  Cambiar rango
                 </button>
               </td>
               <td class="px-4 py-2">
@@ -117,7 +117,7 @@ export default {
   mixins: [formatPrice, singleFaction],
   data: () => {
     return {
-      selected: "",
+      rankObject: "",
       rank: false,
       show: false,
       id: "",
@@ -145,10 +145,10 @@ export default {
     },
     rankEmployee: function (id, index, rank) {
       /* // eslint-disable-next-line no-undef
-            mp.trigger("changeRankFaccion", id, idRank); */
+            mp.trigger("changeRankFaccion", id, rank.id; */
       const info = {
         index: index,
-        rank: rank,
+        rank: rank.label
       };
       this.$store.dispatch("employees/ASCENDEMPLOYEE", info);
 
@@ -158,7 +158,6 @@ export default {
       /* // eslint-disable-next-line no-undef
             mp.trigger("despedirFaccion", id); */
       this.$store.dispatch("employees/DISMISSEMPLOYEE", index);
-      console.log(id);
       return (this.show = false);
     }
   },

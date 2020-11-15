@@ -35,11 +35,11 @@
                   v-model="rank"
                   class="border border-panel-light w-full p-2"
                 >
-                  <option value="" selected>SELECCIONA UN RANGO</option>
+                  <option disabled value="" selected>SELECCIONA UN RANGO</option>
                   <option
                     v-for="(rango, index) in singleFaction._ranks"
                     :key="index"
-                    v-bind:value="rango.label"
+                    v-bind:value="rango"
                   >
                     {{ rango.label }} - {{rango.money}}
                   </option>
@@ -48,7 +48,7 @@
               <td class="px-4 py-2">
                 <button
                   class="button-contract border-panel-normal"
-                  @click="contract(id)"
+                  @click="contract(id, rank)"
                 >
                   CONTRATAR
                 </button>
@@ -76,21 +76,18 @@ export default {
     };
   },
   methods: {
-    contract: function (id) {
+    contract: function (id, rank) {
       if(id !== undefined){
         if(id.trim() !== ""){
-          console.log(id.trim());
+          console.log(id.trim(), rank.id);
+          /* // eslint-disable-next-line no-undef
+            mp.trigger("citizenContract", id, rank.id); */
         }
         
       }
+      this.rank = "";
       this.id = undefined;
-    },
-    gotofile: async function (id) {
-      /* await this.$store.dispatch("loadingScreen/ISLOADING", true); */
-      await this.$router.push({ name: "Citizen", params: { id: id } });
-      /* // eslint-disable-next-line no-undef
-            mp.trigger("getFileRecto", id); */
-    },
+    }
   },
 };
 </script>

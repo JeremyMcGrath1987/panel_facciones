@@ -20,25 +20,25 @@ export default {
       _label: "LSPD",
       _ranks: [
         {
-          id: 0,
+          id: 5,
           name: "cadet",
           label: "Cadete",
           money: "$300"
         },
         {
-          id: 1,
+          id: 45,
           name: "officer",
           label: "Oficial",
           money: "$400"
         },
         {
-          id: 2,
+          id: 17,
           name: "sergeant",
           label: "Sargento",
           money: "$400"
         },
         {
-          id: 3,
+          id: 8,
           name: "lieutenant",
           label: "Teniente",
           money: "$400"
@@ -64,7 +64,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Bolsita María",
               slots: 1,
               weight: 0,
@@ -74,7 +74,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Bolsita Coca",
               slots: 1,
               weight: 0,
@@ -84,7 +84,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Porra",
               slots: 1,
               weight: 0,
@@ -94,7 +94,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Taser",
               slots: 1,
               weight: 0,
@@ -104,7 +104,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Dinero Negro",
               slots: 1,
               weight: 0,
@@ -114,7 +114,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Bidón Gasolina",
               slots: 1,
               weight: 0,
@@ -124,7 +124,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Joyas",
               slots: 1,
               weight: 0,
@@ -134,7 +134,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Linterna",
               slots: 1,
               weight: 0,
@@ -144,7 +144,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Madera mala",
               slots: 1,
               weight: 0,
@@ -154,7 +154,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Madera",
               slots: 1,
               weight: 0,
@@ -164,7 +164,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Madera",
               slots: 1,
               weight: 0,
@@ -174,7 +174,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Madera",
               slots: 1,
               weight: 0,
@@ -184,7 +184,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Madera",
               slots: 1,
               weight: 0,
@@ -194,7 +194,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Madera",
               slots: 1,
               weight: 0,
@@ -204,7 +204,7 @@ export default {
               icon: "madera",
               text: "undefined",
               qty: 2
-            },{
+            }, {
               name: "Madera",
               slots: 1,
               weight: 0,
@@ -239,6 +239,9 @@ export default {
     },
     WITHDRAWMONEY: (context, money) => {
       context.commit("withdrawMoney", money);
+    },
+    EDITSALARY: (context, salary) => {
+      context.commit("editSalary", salary);
     }
   },
   mutations: {
@@ -246,15 +249,18 @@ export default {
       state.data._money += money;
     },
     withdrawMoney: (state, money) => {
-      if((state.data._money - money) < 0){
+      if ((state.data._money - money) < 0) {
         return false
-      }else{
+      } else {
         state.data._money -= money;
       }
-      
+
     },
     setFaction: (state, faction) => {
       state.data = faction;
+    },
+    editSalary: (state, salary) => {
+      state.data._ranks[salary.index].money = ("$"+String(salary.money));
     }
   }
 };

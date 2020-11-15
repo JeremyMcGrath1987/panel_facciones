@@ -73,6 +73,29 @@
           </tbody>
         </table>
       </div>
+      <div
+        v-if="editRank"
+        class="input_money addmoney bg-panel-dark border border-panel-light"
+      >
+        <input
+          class="appearance-none bg-panel-dark border border-panel-light w-full p-2 focus:outline-none placeholder-gray-700"
+          type="number"
+          v-model="money"
+          placeholder="INTRODUCE NUEVO SUELDO"
+        />
+        <button
+          class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+          @click="rank(money), (editRank = false)"
+        >
+          ACEPTAR
+        </button>
+        <button
+          class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+          @click="editRank = false"
+        >
+          CANCELAR
+        </button>
+      </div>
       <div class="file-content p-4 flex flex-col w-1/2">
         <table class="border-b border-panel-dark">
           <tbody>
@@ -87,11 +110,11 @@
               :key="index"
             >
               <td class="px-4 py-2">{{ rango.label }}</td>
-              <td class="px-4 py-2 w-1/6">{{ rango.money }} $</td>
+              <td class="px-4 py-2 w-1/6">{{ rango.money }}</td>
               <td class="px-4 py-2 w-1/6">
                 <button
                   class="button-withdraw border-panel-light"
-                  @click="(show = true), (withdraw = true), (add = false)"
+                  @click="editRank = true, categoryRank=rango.id, labelRank=rango.label, indice=index"
                 >
                   EDITAR SUELDO
                 </button>
@@ -110,10 +133,14 @@ export default {
   components: { fileMenu },
   data: () => {
     return {
+      labelRank:"",
+      categoryRank: "",
+      editRank: false,
       money: undefined,
       show: false,
       add: false,
       withdraw: false,
+      indice: undefined
     };
   },
   async mounted() {
@@ -141,6 +168,26 @@ export default {
           this.show = false;
         }
       }
+    },
+    rank: function (sueldo) {
+      const idRango = this.categoryRank;
+      const label = this.labelRank;
+      const index = this.indice;
+      const salary={
+        label: label,
+        idRank: idRango,
+        money: sueldo,
+        index: index
+      }
+      if (sueldo !== undefined) {
+        if (sueldo > 0) {
+          console.log(sueldo,idRango, label);
+          /* // eslint-disable-next-line no-undef
+            mp.trigger("editSalary", salary); */
+          this.$store.dispatch("EDITSALARY", salary);
+        }
+      }
+      this.money = undefined;
     },
     formatPrice: function (value) {
       let val = (value / 1).toFixed(0).replace(".", ",");
