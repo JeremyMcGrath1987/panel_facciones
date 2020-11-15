@@ -27,8 +27,8 @@ export default {
     WITHDRAWMONEY: (context, money) => {
       context.commit("withdrawMoney", money);
     },
-    EDITSALARY: (context, salary) => {
-      context.commit("editSalary", salary);
+    EDITRANK: (context, rank) => {
+      context.commit("editRank", rank);
     }
   },
   mutations: {
@@ -46,8 +46,9 @@ export default {
     setFaction: (state, faction) => {
       state.data = faction;
     },
-    editSalary: (state, salary) => {
-      state.data._ranks[salary.index].money = salary.money;
+    editRank: (state, rank) => {
+      state.data._ranks[rank.index].money = rank.money;
+      state.data._ranks[rank.index].label = rank.label;
     }
   }
 };

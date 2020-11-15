@@ -78,8 +78,14 @@
         class="input_money addmoney bg-panel-dark border border-panel-light"
       >
         <p class="appearance-none text-white bg-panel-dark w-full p-2">
-          modificar sueldo de {{ this.labelRank }}
+          modificar rango:
         </p>
+        <input
+          class="appearance-none bg-panel-dark border border-panel-light w-full p-2 focus:outline-none placeholder-gray-700"
+          type="text"
+          v-model="labelRank"
+          placeholder="INTRODUCE NOMBRE RANGO"
+        />
         <input
           class="appearance-none bg-panel-dark border border-panel-light w-full p-2 focus:outline-none placeholder-gray-700"
           type="number"
@@ -124,7 +130,7 @@
                       (indice = index)
                   "
                 >
-                  EDITAR SUELDO
+                  EDITAR RANGO
                 </button>
               </td>
             </tr>
@@ -192,10 +198,12 @@ export default {
           const sendInfo = {
             id: idRango,
             money: parseInt(sueldo),
+            label: label,
           };
+          console.log(sendInfo);
           // eslint-disable-next-line no-undef
-          mp.trigger("editSalary", sendInfo);
-          this.$store.dispatch("EDITSALARY", salary);
+          mp.trigger("editRank", sendInfo);
+          this.$store.dispatch("EDITRANK", salary);
         }
       }
       this.money = undefined;
@@ -272,9 +280,10 @@ tr:nth-child(odd) {
 }
 
 .input_money input {
-  width: 100%;
+  width: 42%;
   height: 50px;
   text-align: center;
+  margin-right: 18px;
 }
 
 .input_money button {
