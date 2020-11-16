@@ -108,12 +108,8 @@ export default {
       if (id !== undefined) {
         if (id.trim() !== "" && rank.id != undefined) {
           this.success = true;
-          const infoCitizen = {
-            id: id,
-            idRank: rank.id,
-          };
           // eslint-disable-next-line no-undef
-          mp.trigger("citizenContract", infoCitizen);
+          mp.trigger("citizenContract", id, rank.id);
         }
       }
     },

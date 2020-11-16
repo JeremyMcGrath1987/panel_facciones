@@ -194,14 +194,9 @@ export default {
         index: index,
       };
       if (sueldo !== undefined) {
-        if (sueldo > 0) {
-          const sendInfo = {
-            id: idRango,
-            money: parseInt(sueldo),
-            label: label,
-          };
+        if (sueldo >= 0) {
           // eslint-disable-next-line no-undef
-          mp.trigger("editRank", sendInfo);
+          mp.trigger("editRank", idRango, label, parseInt(sueldo) );
           this.$store.dispatch("EDITRANK", salary);
         }
       }

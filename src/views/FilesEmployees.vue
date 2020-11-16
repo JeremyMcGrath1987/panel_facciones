@@ -89,7 +89,7 @@
               <td class="px-4 py-2">{{ empleado.name }}</td>
               <td class="px-4 py-2">{{ empleado.id }}</td>
               <td class="px-4 py-2">{{ empleado.rank }}</td>
-              <td class="px-4 py-2">
+              <td class="px-4 py-2" v-if="empleado.online">
                 <button
                   :value="index"
                   class="button-rank border-panel-light"
@@ -98,7 +98,8 @@
                   Cambiar rango
                 </button>
               </td>
-              <td class="px-4 py-2">
+              <td v-else class="px-2 py-2"></td>
+              <td class="px-4 py-2" v-if="empleado.online">
                 <button
                   :value="index"
                   class="button-dismiss border-panel-light"
@@ -107,6 +108,7 @@
                   Despedir
                 </button>
               </td>
+              <td v-else class="px-2 py-2"></td>
               <td v-if="empleado.online" class="px-2 py-2 bg-green-600"></td>
               <td v-else class="px-2 py-2 bg-red-600"></td>
             </tr>
@@ -193,7 +195,7 @@ tr:nth-child(odd) {
   border: 1px solid #000000;
 }
 .button-rank {
-  width: 150px;
+  width: 110px;
   height: 20px;
   border: 1px solid #000000;
 }
