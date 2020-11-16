@@ -9,7 +9,16 @@
       <p class="appearance-none text-white bg-panel-dark w-full p-2">
         Selecciona un rango para {{ name }}:
       </p>
-      <select
+      <div
+        class="inline-block mr-2"
+        v-for="(rango, key, index) in singleFaction._ranks"
+        :key="index"
+      >
+        <input type="radio" v-model="rankObject" v-bind:value="rango" />
+        {{ rango.label }}
+      </div>
+      <div></div>
+      <!-- <select
         v-model="rankObject"
         class="text-white border border-panel-light bg-panel-dark w-full p-2"
       >
@@ -21,7 +30,7 @@
         >
           {{ rango.label }}
         </option>
-      </select>
+      </select> -->
       <button
         v-if="rankObject != ''"
         class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
@@ -151,8 +160,8 @@ export default {
     rankEmployee: function (id, index, rank) {
       const infoRank = {
         id: id,
-        idRank: rank.id
-      }
+        idRank: rank.id,
+      };
       // eslint-disable-next-line no-undef
       mp.trigger("changeRankFaccion", infoRank);
       const info = {

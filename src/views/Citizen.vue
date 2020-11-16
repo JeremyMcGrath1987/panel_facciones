@@ -48,7 +48,14 @@
                 />
               </td>
               <td class="px-4 py-2">
-                <select
+                <div
+                  v-for="(rango, key, index) in singleFaction._ranks"
+                  :key="index"
+                >
+                  <input type="radio" v-model="rank" v-bind:value="rango" />
+                  {{ rango.label }} - {{ rango.money }}
+                </div>
+                <!-- <select
                   v-model="rank"
                   class="border border-panel-light w-full p-2"
                 >
@@ -62,7 +69,7 @@
                   >
                     {{ rango.label }} - {{ rango.money }}
                   </option>
-                </select>
+                </select> -->
               </td>
               <td class="px-4 py-2">
                 <button
@@ -97,13 +104,14 @@ export default {
   },
   methods: {
     contract: function (id, rank) {
+      
       if (id !== undefined) {
         if (id.trim() !== "" && rank.id != undefined) {
           this.success = true;
           const infoCitizen = {
             id: id,
-            idRank: rank.id
-          } 
+            idRank: rank.id,
+          };
           // eslint-disable-next-line no-undef
           mp.trigger("citizenContract", infoCitizen);
         }

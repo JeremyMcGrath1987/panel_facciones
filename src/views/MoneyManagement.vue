@@ -75,7 +75,7 @@
       </div>
       <div
         v-if="editRank"
-        class="input_money addmoney bg-panel-dark border border-panel-light"
+        class="addmoney input_rank bg-panel-dark border border-panel-light"
       >
         <p class="appearance-none text-white bg-panel-dark w-full p-2">
           modificar rango:
@@ -200,7 +200,6 @@ export default {
             money: parseInt(sueldo),
             label: label,
           };
-          console.log(sendInfo);
           // eslint-disable-next-line no-undef
           mp.trigger("editRank", sendInfo);
           this.$store.dispatch("EDITRANK", salary);
@@ -265,6 +264,12 @@ tr:nth-child(odd) {
   text-align: center;
 }
 
+.input_rank {
+  font-size: 1.1em;
+  padding: 15px;
+  text-align: center;
+}
+
 .addmoney {
   position: absolute;
   top: 210px;
@@ -280,6 +285,12 @@ tr:nth-child(odd) {
 }
 
 .input_money input {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  margin-right: 18px;
+}
+.input_rank input {
   width: 42%;
   height: 50px;
   text-align: center;
@@ -287,6 +298,10 @@ tr:nth-child(odd) {
 }
 
 .input_money button {
+  margin: 15px 15px 0 15px;
+}
+
+.input_rank button {
   margin: 15px 15px 0 15px;
 }
 

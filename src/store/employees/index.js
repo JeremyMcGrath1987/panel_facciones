@@ -31,7 +31,6 @@ export default {
     },
     dismissEmployee: (state, index) => {
       state.data.splice(index, 1);
-      console.log(index);
 
     }
 
