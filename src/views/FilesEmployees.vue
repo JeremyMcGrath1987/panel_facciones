@@ -211,9 +211,9 @@ tr:nth-child(odd) {
   outline: none;
 }
 .alertSure {
-  position: sticky;
-  top: 210px;
-  left: 300px;
+  position: fixed;
+  bottom: 45%;
+  right: 15%;
   width: 550px;
   font-size: 1.1em;
   padding: 15px;
