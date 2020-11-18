@@ -18,7 +18,7 @@
           contratado con éxito.
         </p>
         <button
-          class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+          class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
           @click="(success = false), (rank = ''), (id = undefined)"
         >
           ACEPTAR
@@ -41,14 +41,15 @@
               <td></td>
               <td class="px-4 py-2">
                 <input
-                  class="appearance-none border border-panel-light w-full p-2 focus:outline-none placeholder-gray-700"
+                  class="appearance-none border border-panel-dark w-full p-2 focus:outline-none placeholder-gray-300 bg-gray-700"
                   type="text"
                   v-model="id"
                   placeholder="INTRODUCE LA ID A CONTRATAR"
                 />
               </td>
-              <td class="px-4 py-2">
+              <td class="px-4 py-2 ancho inline-block">
                 <div
+                class="inline-block mr-6"
                   v-for="(rango, key, index) in singleFaction._ranks"
                   :key="index"
                 >
@@ -73,7 +74,7 @@
               </td>
               <td class="px-4 py-2">
                 <button
-                  class="button-contract border-panel-normal"
+                  class="button-contract border-panel-normal hover:text-gray-500"
                   @click="contract(id, rank)"
                 >
                   CONTRATAR
@@ -144,5 +145,8 @@ tr:nth-child(odd) {
   top: 210px;
   left: 300px;
   width: 550px;
+}
+.ancho{
+  width: 26rem;
 }
 </style>

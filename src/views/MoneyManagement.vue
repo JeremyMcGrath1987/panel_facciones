@@ -17,7 +17,7 @@
       />
       <button
         v-if="add"
-        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="
           addMoney(money), (show = false), (add = false), (withdraw = false)
         "
@@ -26,7 +26,7 @@
       </button>
       <button
         v-if="withdraw"
-        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="
           withdrawMoney(money),
             (show = false),
@@ -37,7 +37,7 @@
         RETIRAR FONDOS
       </button>
       <button
-        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="(show = false), (add = false), (withdraw = false)"
       >
         CANCELAR
@@ -57,13 +57,13 @@
               <td class="px-4 py-2 w-1/6">
                 {{ formatPrice(singleFaction._money) }} $
                 <button
-                  class="button-withdraw border-panel-light"
+                  class="button-withdraw border-panel-light hover:text-gray-500"
                   @click="(show = true), (withdraw = true), (add = false)"
                 >
                   RETIRAR FONDOS
                 </button>
                 <button
-                  class="button-add border-panel-light"
+                  class="button-add border-panel-light hover:text-gray-500"
                   @click="(show = true), (add = true), (withdraw = false)"
                 >
                   INGRESAR FONDOS
@@ -93,13 +93,13 @@
           placeholder="INTRODUCE NUEVO SUELDO"
         />
         <button
-          class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+          class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
           @click="rank(money), (editRank = false)"
         >
           ACEPTAR
         </button>
         <button
-          class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+          class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
           @click="editRank = false"
         >
           CANCELAR
@@ -122,7 +122,7 @@
               <td class="px-4 py-2 w-1/6">{{ rango.money }} $</td>
               <td class="px-4 py-2 w-1/6">
                 <button
-                  class="button-withdraw border-panel-light"
+                  class="button_rank border-panel-light hover:text-gray-500"
                   @click="
                     (editRank = true),
                       (categoryRank = rango.id),
@@ -304,5 +304,13 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.button_rank{
+  width: 82px;
+  height: 20px;
+  border: 1px solid #000000;
+  margin-left: 65px;
+  font-size: 12px;
 }
 </style>

@@ -3,7 +3,7 @@
     <li class="my-10">
       <a
         @click="goto('Information')"
-        class="hover:text-blue-800 cursor-pointer"
+        class="hover:text-gray-500 cursor-pointer"
         :class="{
           'border-b-2 border-panel-normal': active === 'information'
         }"
@@ -13,7 +13,7 @@
     <li class="my-10">
       <a
         @click="goto('FilesEmployees')"
-        class="hover:text-blue-800 cursor-pointer"
+        class="hover:text-gray-500 cursor-pointer"
         :class="{
           'border-b-2 border-panel-normal': active === 'files'
         }"
@@ -23,7 +23,7 @@
     <li class="my-10">
       <a
         @click="goto('MoneyManagement')"
-        class="hover:text-blue-800 cursor-pointer"
+        class="hover:text-gray-500 cursor-pointer"
         :class="{ 'border-b-2 border-panel-normal': active === 'moneymanagement' }"
         >Gestión Dinero</a
       >
@@ -31,7 +31,7 @@
     <li class="my-10">
       <a
         @click="goto('Citizen')"
-        class="hover:text-blue-800 cursor-pointer"
+        class="hover:text-gray-500 cursor-pointer"
         :class="{
           'border-b-2 border-panel-normal': active === 'citizen'
         }"
@@ -42,7 +42,7 @@
     <!-- <li class="my-10">
       <a
         @click="goto('Properties')"
-        class="hover:text-blue-800 cursor-pointer"
+        class="hover:text-gray-500 cursor-pointer"
         :class="{
           'border-b-2 border-panel-normal': active === 'propiedades'
         }"
@@ -52,7 +52,7 @@
     <li class="my-10">
       <a
         @click="goto('Admin')"
-        class="hover:text-blue-800 cursor-pointer"
+        class="hover:text-gray-500 cursor-pointer"
         :class="{
           'border-b-2 border-panel-normal': active === 'admin'
         }"
@@ -60,19 +60,19 @@
       >
     </li> -->
     <!-- <li class="ml-auto border border-panel-normal py-1 px-2">
-      <a class="hover:text-blue-800 cursor-pointer" @click="goto('Note')"
+      <a class="hover:text-gray-500 cursor-pointer" @click="goto('Note')"
         >Añadir nota</a
       >
     </li>
     <li class="ml-1 border border-panel-normal py-1 px-2">
-      <a class="hover:text-blue-800 cursor-pointer" @click="goto('Debt')"
+      <a class="hover:text-gray-500 cursor-pointer" @click="goto('Debt')"
         >Añadir deuda</a
       >
     </li>
     <li
       class="ml-1 border border-panel-normal bg-panel-normal text-white py-1 px-2"
     >
-      <a class="hover:text-blue-800 cursor-pointer" @click="goto('Report')"
+      <a class="hover:text-gray-500 cursor-pointer" @click="goto('Report')"
         >Denunciar</a
       >
     </li> -->

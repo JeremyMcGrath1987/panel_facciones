@@ -10,7 +10,7 @@
         Selecciona un rango para {{ name }}:
       </p>
       <div
-        class="inline-block mr-2"
+        class="inline-block mr-4"
         v-for="(rango, key, index) in singleFaction._ranks"
         :key="index"
       >
@@ -33,13 +33,13 @@
       </select> -->
       <button
         v-if="rankObject != ''"
-        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="rankEmployee(id, index, rankObject)"
       >
         ACEPTAR
       </button>
       <button
-        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="rank = false"
       >
         CANCELAR
@@ -50,13 +50,13 @@
         ¿Estas segura/o de despedir a {{ name }}?
       </p>
       <button
-        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="dismissEmployee(id, index)"
       >
         ACEPTAR
       </button>
       <button
-        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-white py-2 px-4 border border-panel-light hover:border-gray-500"
+        class="flex-shrink-0 bg-panel-light hover:bg-gray-500 text-gray-800 py-2 px-4 border border-panel-light hover:border-gray-500"
         @click="show = false"
       >
         CANCELAR
@@ -92,7 +92,7 @@
               <td class="px-4 py-2" v-if="empleado.online">
                 <button
                   :value="index"
-                  class="button-rank border-panel-light"
+                  class="button-rank border-panel-light hover:text-gray-500"
                   @click="showRank(empleado.id, index, empleado.name)"
                 >
                   Cambiar rango
@@ -102,15 +102,15 @@
               <td class="px-4 py-2" v-if="empleado.online">
                 <button
                   :value="index"
-                  class="button-dismiss border-panel-light"
+                  class="button-dismiss border-panel-light hover:text-gray-500"
                   @click="showSure(empleado.id, index, empleado.name)"
                 >
                   Despedir
                 </button>
               </td>
               <td v-else class="px-2 py-2"></td>
-              <td v-if="empleado.online" class="px-2 py-2 bg-green-600"></td>
-              <td v-else class="px-2 py-2 bg-red-600"></td>
+              <td v-if="empleado.online" class="px-2 py-2 online"></td>
+              <td v-else class="px-2 py-2 offline"></td>
             </tr>
           </tbody>
         </table>
@@ -160,12 +160,8 @@ export default {
       );
     },
     rankEmployee: function (id, index, rank) {
-      const infoRank = {
-        id: id,
-        idRank: rank.id,
-      };
       // eslint-disable-next-line no-undef
-      mp.trigger("changeRankFaccion", infoRank);
+      mp.trigger("changeRankFaccion", id, rank.id);
       const info = {
         index: index,
         rank: rank.label,
@@ -211,9 +207,9 @@ tr:nth-child(odd) {
   outline: none;
 }
 .alertSure {
-  position: sticky;
-  top: 210px;
-  left: 300px;
+  position: fixed;
+  bottom: 45%;
+  right: 15%;
   width: 550px;
   font-size: 1.1em;
   padding: 15px;
@@ -222,5 +218,13 @@ tr:nth-child(odd) {
 
 .alertSure button {
   margin: 15px 15px 0 15px;
+}
+
+.offline{
+  background: url("../assets/images/boton_offline.png") no-repeat center;
+}
+
+.online{
+  background: url("../assets/images/boton_online.png") no-repeat center;
 }
 </style>
