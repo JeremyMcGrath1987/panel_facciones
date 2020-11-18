@@ -99,7 +99,7 @@
                 </button>
               </td>
               <td v-else class="px-2 py-2"></td>
-              <td class="px-4 py-2" v-if="empleado.online">
+              <td class="px-4 py-2">
                 <button
                   :value="index"
                   class="button-dismiss border-panel-light hover:text-gray-500"
@@ -108,7 +108,6 @@
                   Despedir
                 </button>
               </td>
-              <td v-else class="px-2 py-2"></td>
               <td v-if="empleado.online" class="px-2 py-2 online"></td>
               <td v-else class="px-2 py-2 offline"></td>
             </tr>
